@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity"
+    android:orientation="vertical">
+
+    <TextView
+        android:text="Selamat Data Di Aplikasi Pertama"
+        android:textSize="20sp"
+        android:padding="15dp"
+
+        android:gravity="center"
+        android:textStyle="bold"
+        android:layout_marginTop="15dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        tools:srcCompat="@tools:sample/avatars"
+        />
+
+    <EditText
+
+            android:id="@+id/txtemail"
+            android:inputType="textEmailAddress"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Masukkan Email"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"/>
+    <EditText
+        android:id="@+id/txtpassword"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Masukkan Password"
+        android:inputType="textPassword"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:orientation="horizontal" >
+
+        <Button
+            android:layout_marginLeft="10dp"
+            android:id="@+id/btnlogin"
+            android:layout_width="194dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:background="@drawable/solid"
+            android:radius="15dp"
+            android:text="Login"
+            android:textColor="@color/black" />
+
+        <Button
+            android:id="@+id/btnRegist"
+            android:layout_marginLeft="5dp"
+            android:layout_width="194dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:background="@drawable/solid"
+            android:radius="15dp"
+            android:text="Sign Up"
+            android:textColor="@color/black" />
+    </LinearLayout>
+
+
+</LinearLayout>

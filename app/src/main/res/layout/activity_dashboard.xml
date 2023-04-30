@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".DashboardActivity"
+    android:orientation ="vertical">
+
+    <TextView
+        android:id="@+id/tUsername"
+
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Uername" />
+
+    <TextView
+        android:id="@+id/tEmail"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Email" />
+
+    <TextView
+        android:id="@+id/tAlamat"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Alamat" />
+
+    <TextView
+        android:id="@+id/tTelepon"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Telepon" />
+
+    <TextView
+        android:id="@+id/createdAt"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Created At" />
+
+    <TextView
+        android:id="@+id/updatedAt"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Updated At" />
+
+    <Button
+        android:id="@+id/btnBack"
+
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Back"
+        tools:layout_editor_absoluteX="158dp"
+        tools:layout_editor_absoluteY="113dp" />
+
+    <Button
+        android:id="@+id/btnLogout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Logout"
+        tools:layout_editor_absoluteX="160dp"
+        tools:layout_editor_absoluteY="194dp" />
+
+    <Button
+        android:id="@+id/btnDetail"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Detail"
+        tools:layout_editor_absoluteX="161dp"
+        tools:layout_editor_absoluteY="281dp" />
+</LinearLayout>
