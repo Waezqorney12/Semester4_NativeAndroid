@@ -115,7 +115,7 @@ public class Login extends AppCompatActivity {
                 Http http = new Http(Login.this, url);
                 http.setMethod("POST");
                 http.setData(data);
-                http.send();
+                
 
                 runOnUiThread(new Runnable() {
                     @Override
