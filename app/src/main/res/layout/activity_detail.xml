@@ -9,25 +9,58 @@
 
 
     <TextView
-        android:id="@+id/username"
+        android:id="@+id/pUsername"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="TextView"
+        android:text="User"
         android:gravity="center"
+        android:textColor="@color/black"
         android:layout_gravity="center"
         />
 
     <TextView
-        android:id="@+id/alamat"
+        android:id="@+id/pEmail"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:gravity="center"
-        android:text="TextView" />
-
+        android:textColor="@color/black"
+        android:text="Email" />
+    <TextView
+        android:id="@+id/pAlamat"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:textColor="@color/black"
+        android:text="Alamat" />
+    <TextView
+        android:id="@+id/pTelepon"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:textColor="@color/black"
+        android:text="Telepon" />
+    <TextView
+        android:id="@+id/pcreatedAt"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:textColor="@color/black"
+        android:text="Created At" />
+    <TextView
+        android:id="@+id/pupdatedAt"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:textColor="@color/black"
+        android:text="updatedAt" />
     <Button
         android:id="@+id/keluar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Button" />
+        android:text="Back" />
 </LinearLayout>

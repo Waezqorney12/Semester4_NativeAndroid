@@ -1,6 +1,8 @@
 package com.example.myapplication;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -15,34 +17,33 @@ import org.json.JSONObject;
 
 public class DashboardActivity extends AppCompatActivity {
     Button btnLogout;
-    Button btnDetail;
     Button btnBack;
-
+    Button btnDetail;
     TextView tUsername,tEmail,tAlamat,tTelepon,createdAt,updatedAt;
 
-//    SharedPreferences pref;
-//    SharedPreferences.Editor editor;
-//    private  static  final String SHARED_PREF_NAME = "mypref";
+    SharedPreferences sharedPreferences;
+    String token;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
             super.onCreate(savedInstanceState);
             setContentView(R.layout.activity_dashboard);
-//            pref = getSharedPreferences(SHARED_PREF_NAME,MODE_PRIVATE);
 
-//            editor = pref.edit();
+        sharedPreferences = getSharedPreferences("STORAGE_LOGIN_API", Context.MODE_PRIVATE);
+        token = sharedPreferences.getString("TOKEN", "");
 
-            tUsername = findViewById(R.id.tUsername);
+        Log.d("TAGS","Status: " + token);
+        tUsername = findViewById(R.id.tUsername);
         tEmail = findViewById(R.id.tEmail);
         tAlamat = findViewById(R.id.tAlamat);
         tTelepon = findViewById(R.id.tTelepon);
-         createdAt = findViewById(R.id.createdAt);
+        createdAt = findViewById(R.id.createdAt);
         updatedAt = findViewById(R.id.updatedAt);
 
             btnBack = findViewById(R.id.btnBack);
             btnLogout = findViewById(R.id.btnLogout);
             btnDetail = findViewById(R.id.btnDetail);
 
-            getUser();
+
 
             btnLogout.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -59,7 +60,8 @@ public class DashboardActivity extends AppCompatActivity {
 
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(DashboardActivity.this,DetailActivity.class));
+                getUser();
+
 
 
             }
@@ -96,15 +98,25 @@ public class DashboardActivity extends AppCompatActivity {
                                 String email = response.getString("email");
                                 String alamat = response.getString("alamat");
                                 String telepon = response.getString("telepon");
+                                String password = response.getString("password");
                                 String created_at = response.getString("created_at");
                                 String updated_at = response.getString("updated_at");
 
-                                tUsername.setText(username);
-                                tEmail.setText(email);
-                                tAlamat.setText(alamat);
-                                tTelepon.setText(telepon);
-                                createdAt.setText(created_at);
-                                updatedAt.setText(updated_at);
+                                Intent intent = new Intent(DashboardActivity.this,DetailActivity.class);
+                                intent.putExtra("username",username);
+                                intent.putExtra("email",email);
+                                intent.putExtra("alamat",alamat);
+                                intent.putExtra("telepon",telepon);
+                                intent.putExtra("password",password);
+                                intent.putExtra("created_at",created_at);
+                                intent.putExtra("updated_at",updated_at);
+                                startActivity(intent);
+//                                tUsername.setText(username);
+//                                tEmail.setText(email);
+//                                tAlamat.setText(alamat);
+//                                tTelepon.setText(telepon);
+//                                createdAt.setText(created_at);
+//                                updatedAt.setText(updated_at);
                             } catch (JSONException e) {
                                 e.printStackTrace();
                             }

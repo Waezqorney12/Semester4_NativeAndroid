@@ -42,6 +42,12 @@ public class Login extends AppCompatActivity {
         getSupportActionBar().setTitle("Login");
 
         localStorage = new LocalStorage(Login.this);
+        // Check if user is already logged in
+        if (localStorage.getToken() != null) {
+            Intent intent = new Intent(Login.this, DashboardActivity.class);
+            startActivity(intent);
+            finish();
+        }
 
         editEmail = findViewById(R.id.txtemail);
         editPassword = findViewById(R.id.txtpassword);
@@ -56,20 +62,7 @@ public class Login extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-//        TextView forgot = findViewById(R.id.forgotPassword);
-//
-//        String text = "Forgot Your Password";
-//        SpannableString ss = new SpannableString(text);
-//        ClickableSpan clickableSpan = new ClickableSpan() {
-//            @Override
-//            public void onClick(@NonNull View widget) {
-//              Intent intent = new Intent(Login.this,ForgotPassword.class);
-//            }
-//
-//        };
-//        ss.setSpan(clickableSpan,13,21, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
-//        forgot.setText(ss);
-//        forgot.setMovementMethod(LinkMovementMethod.getInstance());
+
 
         btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -115,7 +108,7 @@ public class Login extends AppCompatActivity {
                 Http http = new Http(Login.this, url);
                 http.setMethod("POST");
                 http.setData(data);
-                
+                http.send();
 
                 runOnUiThread(new Runnable() {
                     @Override
