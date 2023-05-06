@@ -1,13 +1,10 @@
 package com.example.myapplication;
 
-import android.content.Context;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -70,7 +67,7 @@ public class DashboardActivity extends AppCompatActivity {
             btnBack.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    Intent intents = new Intent(DashboardActivity.this,MainActivity.class);
+                    Intent intents = new Intent(DashboardActivity.this, Login.class);
                     startActivity(intents);
                 }
             });
@@ -114,7 +111,7 @@ public class DashboardActivity extends AppCompatActivity {
                         }
                         else if (code == 401) {
                             Toast.makeText(DashboardActivity.this, "Unauthorized access. Please login again.", Toast.LENGTH_SHORT).show();
-                            startActivity(new Intent(DashboardActivity.this, MainActivity.class));
+                            startActivity(new Intent(DashboardActivity.this, Login.class));
                             finish();
                         }
                         else {
@@ -142,7 +139,7 @@ public class DashboardActivity extends AppCompatActivity {
                     public void run() {
                         Integer code = http.getStatusCode();
                         if (code == 200){
-                            Intent intents = new Intent(DashboardActivity.this, MainActivity.class);
+                            Intent intents = new Intent(DashboardActivity.this, Login.class);
                             startActivity(intents);
                             finish();
                             Toast.makeText(DashboardActivity.this,"Logout Berhasil",Toast.LENGTH_LONG).show();
@@ -181,7 +178,7 @@ public class DashboardActivity extends AppCompatActivity {
 //
 //            editor.clear();
 //            editor.apply();
-//            Intent intents = new Intent(DashboardActivity.this, MainActivity.class);
+//            Intent intents = new Intent(DashboardActivity.this, Login.class);
 //            startActivity(intents);
 //            finish();
 //            Toast.makeText(DashboardActivity.this,"Logout Berhasil",Toast.LENGTH_LONG).show();
@@ -201,7 +198,7 @@ public class DashboardActivity extends AppCompatActivity {
 //        btnBack.setOnClickListener(new View.OnClickListener() {
 //        @Override
 //        public void onClick(View view) {
-//            Intent intents = new Intent(DashboardActivity.this,MainActivity.class);
+//            Intent intents = new Intent(DashboardActivity.this,Login.class);
 //            startActivity(intents);
 //        }
 //    });

@@ -1,13 +1,17 @@
 package com.example.myapplication;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.AlertDialog;
-import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.text.SpannableString;
+import android.text.Spanned;
+import android.text.method.LinkMovementMethod;
+import android.text.style.ClickableSpan;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -17,11 +21,12 @@ import android.widget.Toast;
 
 import org.json.JSONException;
 import org.json.JSONObject;
+import org.w3c.dom.Text;
 
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 
-public class MainActivity extends AppCompatActivity {
+public class Login extends AppCompatActivity {
     EditText editEmail,editPassword;
     Button btnLogin,btnRegist;
     SharedPreferences pref;
@@ -32,18 +37,39 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_login);
 
         getSupportActionBar().setTitle("Login");
 
-        localStorage = new LocalStorage(MainActivity.this);
+        localStorage = new LocalStorage(Login.this);
 
         editEmail = findViewById(R.id.txtemail);
         editPassword = findViewById(R.id.txtpassword);
         btnLogin = findViewById(R.id.btnlogin);
         btnRegist=findViewById(R.id.btnRegist);
+        TextView forgot = findViewById(R.id.forgotPassword2);
 
-
+        forgot.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(Login.this,ForgotPassword.class);
+                startActivity(intent);
+            }
+        });
+//        TextView forgot = findViewById(R.id.forgotPassword);
+//
+//        String text = "Forgot Your Password";
+//        SpannableString ss = new SpannableString(text);
+//        ClickableSpan clickableSpan = new ClickableSpan() {
+//            @Override
+//            public void onClick(@NonNull View widget) {
+//              Intent intent = new Intent(Login.this,ForgotPassword.class);
+//            }
+//
+//        };
+//        ss.setSpan(clickableSpan,13,21, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+//        forgot.setText(ss);
+//        forgot.setMovementMethod(LinkMovementMethod.getInstance());
 
         btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -54,7 +80,7 @@ public class MainActivity extends AppCompatActivity {
         btnRegist.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(MainActivity.this,Register.class);
+                Intent intent = new Intent(Login.this,Register.class);
                 startActivity(intent);
             }
         });
@@ -86,7 +112,7 @@ public class MainActivity extends AppCompatActivity {
         new Thread(new Runnable() {
             @Override
             public void run() {
-                Http http = new Http(MainActivity.this, url);
+                Http http = new Http(Login.this, url);
                 http.setMethod("POST");
                 http.setData(data);
                 http.send();
@@ -104,7 +130,7 @@ public class MainActivity extends AppCompatActivity {
                                 String token = response.getString("token");
                                 Log.d("TAG", "token: " + token);
                                 localStorage.setToken(token);
-                                Intent intent = new Intent(MainActivity.this, DashboardActivity.class);
+                                Intent intent = new Intent(Login.this, DashboardActivity.class);
                                 Log.d("TAG", "Intent: " + intent);
                                 startActivity(intent);
                                 finish();
@@ -118,7 +144,7 @@ public class MainActivity extends AppCompatActivity {
                                     String msg = response.getString("message");
                                     alertFail(msg);
                                 } else {
-                                    Toast.makeText(MainActivity.this, "Data tidak dapat di proses", Toast.LENGTH_SHORT).show();
+                                    Toast.makeText(Login.this, "Data tidak dapat di proses", Toast.LENGTH_SHORT).show();
                                 }
                             } catch (JSONException e) {
                                 e.printStackTrace();
@@ -133,7 +159,7 @@ public class MainActivity extends AppCompatActivity {
                                 e.printStackTrace();
                             }
                         } else {
-                            Toast.makeText(MainActivity.this, "Error" + code, Toast.LENGTH_SHORT).show();
+                            Toast.makeText(Login.this, "Error" + code, Toast.LENGTH_SHORT).show();
                         }
                     }
                 });

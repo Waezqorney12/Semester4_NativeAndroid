@@ -4,88 +4,145 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity"
+    tools:context=".Login"
     android:orientation="vertical"
-    android:gravity="center"
+
     android:paddingHorizontal="40dp"
+    android:background="#EEEEEE"
 
     >
 
+    <TextView
+        android:layout_marginTop="30dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Register"
+        android:textSize="24dp"
+        android:textColor="@color/black"
+        android:textStyle="bold"
+        android:layout_marginRight="30dp"
+        android:layout_marginLeft="5dp"
+        />
+    <TextView
+        android:layout_marginTop="5dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Create new account"
+        android:textSize="12dp"
+        android:textColor="@color/black"
+
+        android:layout_marginRight="30dp"
+        android:layout_marginBottom="20dp"
+        android:layout_marginLeft="5dp"
+        />
     <EditText
 
         android:id="@+id/txtusername"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+
         android:hint="Masukkan Username"
+        android:layout_marginTop="15dp"
         android:layout_marginLeft="5dp"
         android:layout_marginRight="5dp"
         android:layout_marginBottom="10dp"
+        android:background="@drawable/sa"
+        android:paddingLeft="15dp"
+        android:layout_height="50dp"
         />
 
     <EditText
         android:id="@+id/txtemail"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+
         android:layout_marginLeft="5dp"
 
         android:layout_marginRight="5dp"
         android:layout_marginBottom="10dp"
-        android:hint="Masukkan Email" />
+        android:hint="Masukkan Email"
+        android:background="@drawable/sa"
+        android:paddingLeft="15dp"
+        android:layout_height="50dp"
+        />
 
     <EditText
 
         android:id="@+id/txtalamat"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+
         android:layout_marginLeft="5dp"
         android:layout_marginRight="5dp"
         android:layout_marginBottom="10dp"
-        android:hint="Masukkan Alamat" />
+        android:hint="Masukkan Alamat"
+        android:background="@drawable/sa"
+        android:paddingLeft="15dp"
+        android:layout_height="50dp"
+        />
 
     <EditText
         android:id="@+id/txttelepon"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+
         android:layout_marginLeft="5dp"
         android:layout_marginRight="5dp"
         android:layout_marginBottom="10dp"
         android:hint="Masukkan Nomor Telepon"
-        android:inputType="number" />
+        android:inputType="number"
+        android:background="@drawable/sa"
+        android:paddingLeft="15dp"
+        android:layout_height="50dp" />
 
     <EditText
         android:id="@+id/txtpassword"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+
         android:hint="Masukkan Password"
         android:inputType="textPassword"
         android:layout_marginLeft="5dp"
         android:layout_marginRight="5dp"
         android:layout_marginBottom="10dp"
+        android:background="@drawable/sa"
+        android:paddingLeft="15dp"
+        android:layout_height="50dp"
         />
     <EditText
         android:id="@+id/txtpasswordConfirmation"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+
         android:hint="Masukkan Ulang Password"
         android:inputType="textPassword"
         android:layout_marginLeft="5dp"
         android:layout_marginRight="5dp"
-        android:layout_marginBottom="10dp"
+        android:layout_marginBottom="45dp"
+        android:background="@drawable/sa"
+        android:paddingLeft="15dp"
+        android:layout_height="50dp"
         />
 
-    <Button
-        android:id="@+id/btnSignUp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Sign Up"
-        tools:layout_editor_absoluteX="196dp"
-        tools:layout_editor_absoluteY="356dp" />
 
-    <Button
-        android:id="@+id/btnBackRegist"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Back"
-        tools:layout_editor_absoluteX="196dp"
-        tools:layout_editor_absoluteY="356dp" />
+    <LinearLayout
+
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:orientation="horizontal">
+        <Button
+            android:id="@+id/btnBackRegist"
+            android:layout_width="150dp"
+            android:layout_height="50dp"
+            android:background="@drawable/solid"
+            android:text="Back"
+            tools:layout_editor_absoluteX="196dp"
+            tools:layout_editor_absoluteY="356dp" />
+        <Button
+            android:layout_marginLeft="15dp"
+            android:id="@+id/btnSignUp"
+            android:layout_width="150dp"
+            android:layout_height="50dp"
+            android:background="@drawable/solid"
+            android:text="Register"
+            tools:layout_editor_absoluteX="196dp"
+            tools:layout_editor_absoluteY="356dp" />
+
+
+    </LinearLayout>
+
 </LinearLayout>
