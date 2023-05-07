@@ -25,7 +25,8 @@ public class Register extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
 
-        getSupportActionBar().setTitle("Register");
+        getSupportActionBar().hide();
+
 
         btnBackRegist = findViewById(R.id.btnBackRegist);
         btnSignUp = findViewById(R.id.btnSignUp);

@@ -39,15 +39,11 @@ public class Login extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
-        getSupportActionBar().setTitle("Login");
+        getSupportActionBar().hide();
 
         localStorage = new LocalStorage(Login.this);
         // Check if user is already logged in
-        if (localStorage.getToken() != null) {
-            Intent intent = new Intent(Login.this, DashboardActivity.class);
-            startActivity(intent);
-            finish();
-        }
+
 
         editEmail = findViewById(R.id.txtemail);
         editPassword = findViewById(R.id.txtpassword);

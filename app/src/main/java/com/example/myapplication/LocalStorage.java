@@ -18,8 +18,8 @@ public class LocalStorage {
         editor = sharedPreferences.edit();
     }
     public String getToken(){
-        token = sharedPreferences.getString("TOKEN","");
-        Log.d("Tag","konto"+token);
+        token = sharedPreferences.getString("TOKEN",null);
+        Log.d("Tag","Token: "+token);
         return token;
     }
     public void setToken(String token){

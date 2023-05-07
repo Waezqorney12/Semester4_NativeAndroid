@@ -37,6 +37,7 @@ public class ForgotPassword extends AppCompatActivity {
 
         //Untuk kembali ke halaman login
         btnforgot = findViewById(R.id.btnforgotPassword);
+        getSupportActionBar().hide();
 
         btnforgot.setOnClickListener(new View.OnClickListener() {
             @Override

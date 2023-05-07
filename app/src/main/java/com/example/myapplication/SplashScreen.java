@@ -12,14 +12,20 @@ public class SplashScreen extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash_screen);
-
+        LocalStorage localStorage = new LocalStorage(SplashScreen.this);
         getSupportActionBar().hide();
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
-                Intent intent = new Intent(SplashScreen.this, Login.class);
-                startActivity(intent);
-                finish();
+                if (localStorage.getToken() != null) {
+                    Intent intent = new Intent(SplashScreen.this, DashboardActivity.class);
+                    startActivity(intent);
+                    finish();
+                }else {
+                    Intent intent = new Intent(SplashScreen.this,Login.class);
+                    startActivity(intent);
+                    finish();
+                }
             }
         },3000);
     }

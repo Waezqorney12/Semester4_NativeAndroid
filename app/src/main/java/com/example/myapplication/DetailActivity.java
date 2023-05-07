@@ -23,6 +23,7 @@ public class DetailActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detail);
+        getSupportActionBar().hide();
 
         keluar = findViewById(R.id.keluar);
         username = findViewById(R.id.pUsername);
@@ -39,6 +40,7 @@ public class DetailActivity extends AppCompatActivity {
         telepon.setText(intent.getStringExtra("telepon"));
         createdAt.setText(intent.getStringExtra("created_at"));
         updatedAt.setText(intent.getStringExtra("updated_at"));
+
 
         if (keluar != null){
             keluar.setOnClickListener(new View.OnClickListener() {

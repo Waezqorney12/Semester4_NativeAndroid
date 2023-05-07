@@ -28,10 +28,14 @@ public class DashboardActivity extends AppCompatActivity {
             super.onCreate(savedInstanceState);
             setContentView(R.layout.activity_dashboard);
 
-        sharedPreferences = getSharedPreferences("STORAGE_LOGIN_API", Context.MODE_PRIVATE);
-        token = sharedPreferences.getString("TOKEN", "");
 
-        Log.d("TAGS","Status: " + token);
+        getSupportActionBar().hide();
+        sharedPreferences = getSharedPreferences("STORAGE_LOGIN_API", Context.MODE_PRIVATE);
+
+        token = sharedPreferences.getString("TOKEN", "");
+        Log.d("TAGS","Token SharedPreferences: " + token);
+
+
         tUsername = findViewById(R.id.tUsername);
         tEmail = findViewById(R.id.tEmail);
         tAlamat = findViewById(R.id.tAlamat);
@@ -49,10 +53,6 @@ public class DashboardActivity extends AppCompatActivity {
                 @Override
                 public void onClick(View view) {
                     logout();
-//                    editor.clear();
-//                    editor.apply();
-
-
                 }
 
             });
@@ -76,6 +76,7 @@ public class DashboardActivity extends AppCompatActivity {
         }
     private void getUser(){
         String url = getString(R.string.api_server)+"/user";
+
         Log.d("Tag","Http:"+url);
 
         new Thread(new Runnable() {
@@ -98,7 +99,7 @@ public class DashboardActivity extends AppCompatActivity {
                                 String email = response.getString("email");
                                 String alamat = response.getString("alamat");
                                 String telepon = response.getString("telepon");
-                                String password = response.getString("password");
+
                                 String created_at = response.getString("created_at");
                                 String updated_at = response.getString("updated_at");
 
@@ -107,7 +108,7 @@ public class DashboardActivity extends AppCompatActivity {
                                 intent.putExtra("email",email);
                                 intent.putExtra("alamat",alamat);
                                 intent.putExtra("telepon",telepon);
-                                intent.putExtra("password",password);
+
                                 intent.putExtra("created_at",created_at);
                                 intent.putExtra("updated_at",updated_at);
                                 startActivity(intent);
@@ -151,6 +152,10 @@ public class DashboardActivity extends AppCompatActivity {
                     public void run() {
                         Integer code = http.getStatusCode();
                         if (code == 200){
+                            SharedPreferences.Editor editor = sharedPreferences.edit();
+                            Log.d("Tag","Editor: " + editor);
+                            editor.remove("TOKEN");
+                            editor.apply();
                             Intent intents = new Intent(DashboardActivity.this, Login.class);
                             startActivity(intents);
                             finish();
