@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/linearLayout2"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#EEEEEE"
+    android:orientation="vertical"
+    tools:context=".ProfileActivity">
+
+
+    <ImageView
+        android:id="@+id/bgLiquid"
+        android:layout_width="wrap_content"
+        android:layout_height="200dp"
+        android:background="@drawable/liquid"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/profilePic"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+
+        android:layout_marginLeft="144dp"
+        android:layout_marginTop="124dp"
+        android:layout_marginEnd="128dp"
+        android:background="@drawable/profilepic"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/pUsername"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+
+        android:layout_marginTop="12dp"
+        android:gravity="center"
+        android:text="Username"
+        android:textColor="@color/black"
+        app:layout_constraintTop_toBottomOf="@+id/profilePic"
+        tools:layout_editor_absoluteX="0dp" />
+
+    <Button
+        android:id="@+id/bPersonal"
+        android:layout_width="300dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/solid"
+        android:drawableLeft="@drawable/ic_baseline_contacts_24"
+        android:paddingLeft="15dp"
+        android:paddingRight="30dp"
+        android:text="Personal Information"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.495"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/pUsername" />
+
+    <Button
+        android:id="@+id/bPassword"
+        android:layout_width="300dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/solid"
+        android:drawableLeft="@drawable/ic_baseline_security_24"
+        android:paddingLeft="15dp"
+        android:paddingRight="30dp"
+        android:text="Change Password"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.495"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/bPersonal" />
+
+    <Button
+        android:id="@+id/bLogout"
+        android:layout_width="300dp"
+        android:layout_height="50dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="24dp"
+        android:background="@drawable/solid"
+        android:drawableLeft="@drawable/ic_baseline_cancel_24"
+        android:paddingLeft="15dp"
+
+        android:paddingRight="30dp"
+        android:text="Logout"
+
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.414"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/bPassword" />
+
+    <Button
+        android:id="@+id/keluar"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:background="@drawable/solid"
+        android:drawableLeft="@drawable/ic_baseline_arrow_back"
+        android:paddingLeft="15dp"
+        android:paddingRight="30dp"
+        android:text="Back"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.504"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/bLogout" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

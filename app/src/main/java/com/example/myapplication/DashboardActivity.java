@@ -47,7 +47,7 @@ public class DashboardActivity extends AppCompatActivity {
             btnLogout = findViewById(R.id.btnLogout);
             btnDetail = findViewById(R.id.btnDetail);
 
-
+            getUser();
 
             btnLogout.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -60,20 +60,73 @@ public class DashboardActivity extends AppCompatActivity {
 
             @Override
             public void onClick(View view) {
-                getUser();
-
-
-
+                sendUser();
             }
         });
             btnBack.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    Intent intents = new Intent(DashboardActivity.this, Login.class);
+                    Intent intents = new Intent(DashboardActivity.this, LoginActivity.class);
                     startActivity(intents);
                 }
             });
         }
+    private void sendUser(){
+        String url = getString(R.string.api_server)+"/user";
+
+        Log.d("Tag","Http:"+url);
+
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                Http http = new Http(DashboardActivity.this,url);
+
+                http.setToken(true);
+                http.send();
+                Log.d("Tag","Http:"+http);
+
+                runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        Integer code = http.getStatusCode();
+                        if (code == 200){
+                            try {
+                                JSONObject response = new JSONObject(http.getResponse());
+                                String username = response.getString("username");
+                                String email = response.getString("email");
+                                String alamat = response.getString("alamat");
+                                String telepon = response.getString("telepon");
+
+                                String created_at = response.getString("created_at");
+                                String updated_at = response.getString("updated_at");
+
+                                Intent intent = new Intent(DashboardActivity.this, ProfileActivity.class);
+                                intent.putExtra("username",username);
+                                intent.putExtra("email",email);
+                                intent.putExtra("alamat",alamat);
+                                intent.putExtra("telepon",telepon);
+
+                                intent.putExtra("created_at",created_at);
+                                intent.putExtra("updated_at",updated_at);
+                                startActivity(intent);
+
+                            } catch (JSONException e) {
+                                e.printStackTrace();
+                            }
+                        }
+                        else if (code == 401) {
+                            Toast.makeText(DashboardActivity.this, "Unauthorized access. Please login again.", Toast.LENGTH_SHORT).show();
+                            startActivity(new Intent(DashboardActivity.this, LoginActivity.class));
+                            finish();
+                        }
+                        else {
+                            Toast.makeText(DashboardActivity.this, "Data tidak terdeteksi", Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                });
+            }
+        }).start();
+    }
     private void getUser(){
         String url = getString(R.string.api_server)+"/user";
 
@@ -103,28 +156,21 @@ public class DashboardActivity extends AppCompatActivity {
                                 String created_at = response.getString("created_at");
                                 String updated_at = response.getString("updated_at");
 
-                                Intent intent = new Intent(DashboardActivity.this,DetailActivity.class);
-                                intent.putExtra("username",username);
-                                intent.putExtra("email",email);
-                                intent.putExtra("alamat",alamat);
-                                intent.putExtra("telepon",telepon);
+                                tUsername.setText(username);
+                                tEmail.setText(email);
+                                tAlamat.setText(alamat);
+                                tTelepon.setText(telepon);
+                                createdAt.setText(created_at);
+                                updatedAt.setText(updated_at);
+//
 
-                                intent.putExtra("created_at",created_at);
-                                intent.putExtra("updated_at",updated_at);
-                                startActivity(intent);
-//                                tUsername.setText(username);
-//                                tEmail.setText(email);
-//                                tAlamat.setText(alamat);
-//                                tTelepon.setText(telepon);
-//                                createdAt.setText(created_at);
-//                                updatedAt.setText(updated_at);
                             } catch (JSONException e) {
                                 e.printStackTrace();
                             }
                         }
                         else if (code == 401) {
                             Toast.makeText(DashboardActivity.this, "Unauthorized access. Please login again.", Toast.LENGTH_SHORT).show();
-                            startActivity(new Intent(DashboardActivity.this, Login.class));
+                            startActivity(new Intent(DashboardActivity.this, LoginActivity.class));
                             finish();
                         }
                         else {
@@ -156,7 +202,7 @@ public class DashboardActivity extends AppCompatActivity {
                             Log.d("Tag","Editor: " + editor);
                             editor.remove("TOKEN");
                             editor.apply();
-                            Intent intents = new Intent(DashboardActivity.this, Login.class);
+                            Intent intents = new Intent(DashboardActivity.this, LoginActivity.class);
                             startActivity(intents);
                             finish();
                             Toast.makeText(DashboardActivity.this,"Logout Berhasil",Toast.LENGTH_LONG).show();
@@ -195,7 +241,7 @@ public class DashboardActivity extends AppCompatActivity {
 //
 //            editor.clear();
 //            editor.apply();
-//            Intent intents = new Intent(DashboardActivity.this, Login.class);
+//            Intent intents = new Intent(DashboardActivity.this, LoginActivity.class);
 //            startActivity(intents);
 //            finish();
 //            Toast.makeText(DashboardActivity.this,"Logout Berhasil",Toast.LENGTH_LONG).show();
@@ -207,7 +253,7 @@ public class DashboardActivity extends AppCompatActivity {
 ////            String alamat;
 ////            @Override
 ////            public void onClick(View view) {
-////                startActivity(new Intent(DashboardActivity.this,DetailActivity.class));
+////                startActivity(new Intent(DashboardActivity.this,ProfileActivity.class));
 ////
 ////
 ////            }
@@ -215,7 +261,7 @@ public class DashboardActivity extends AppCompatActivity {
 //        btnBack.setOnClickListener(new View.OnClickListener() {
 //        @Override
 //        public void onClick(View view) {
-//            Intent intents = new Intent(DashboardActivity.this,Login.class);
+//            Intent intents = new Intent(DashboardActivity.this,LoginActivity.class);
 //            startActivity(intents);
 //        }
 //    });

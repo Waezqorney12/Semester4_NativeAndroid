@@ -40,7 +40,7 @@ public class Register extends AppCompatActivity {
         btnBackRegist.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(Register.this, Login.class);
+                Intent intent = new Intent(Register.this, LoginActivity.class);
                 startActivity(intent);
             }
         });
@@ -129,7 +129,7 @@ public class Register extends AppCompatActivity {
                 .setTitle("Success")
                 .setIcon(R.drawable.ic_check)
                 .setMessage(s)
-                .setPositiveButton("Login", new DialogInterface.OnClickListener() {
+                .setPositiveButton("LoginActivity", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         onBackPressed();

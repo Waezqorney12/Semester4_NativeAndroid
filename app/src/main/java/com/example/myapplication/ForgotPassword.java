@@ -17,7 +17,6 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.IOException;
-import java.util.regex.Pattern;
 
 import okhttp3.ResponseBody;
 import retrofit2.Call;
@@ -42,7 +41,7 @@ public class ForgotPassword extends AppCompatActivity {
         btnforgot.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(ForgotPassword.this,Login.class);
+                Intent intent = new Intent(ForgotPassword.this, LoginActivity.class);
                 startActivity(intent);
             }
         });

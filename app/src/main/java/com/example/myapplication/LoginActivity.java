@@ -1,6 +1,5 @@
 package com.example.myapplication;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.AlertDialog;
@@ -8,10 +7,6 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.text.SpannableString;
-import android.text.Spanned;
-import android.text.method.LinkMovementMethod;
-import android.text.style.ClickableSpan;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -21,12 +16,11 @@ import android.widget.Toast;
 
 import org.json.JSONException;
 import org.json.JSONObject;
-import org.w3c.dom.Text;
 
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 
-public class Login extends AppCompatActivity {
+public class LoginActivity extends AppCompatActivity {
     EditText editEmail,editPassword;
     Button btnLogin,btnRegist;
     SharedPreferences pref;
@@ -41,7 +35,7 @@ public class Login extends AppCompatActivity {
 
         getSupportActionBar().hide();
 
-        localStorage = new LocalStorage(Login.this);
+        localStorage = new LocalStorage(LoginActivity.this);
         // Check if user is already logged in
 
 
@@ -54,7 +48,7 @@ public class Login extends AppCompatActivity {
         forgot.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(Login.this,ForgotPassword.class);
+                Intent intent = new Intent(LoginActivity.this,ForgotPassword.class);
                 startActivity(intent);
             }
         });
@@ -69,7 +63,7 @@ public class Login extends AppCompatActivity {
         btnRegist.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(Login.this,Register.class);
+                Intent intent = new Intent(LoginActivity.this,Register.class);
                 startActivity(intent);
             }
         });
@@ -101,7 +95,7 @@ public class Login extends AppCompatActivity {
         new Thread(new Runnable() {
             @Override
             public void run() {
-                Http http = new Http(Login.this, url);
+                Http http = new Http(LoginActivity.this, url);
                 http.setMethod("POST");
                 http.setData(data);
                 http.send();
@@ -119,7 +113,7 @@ public class Login extends AppCompatActivity {
                                 String token = response.getString("token");
                                 Log.d("TAG", "token: " + token);
                                 localStorage.setToken(token);
-                                Intent intent = new Intent(Login.this, DashboardActivity.class);
+                                Intent intent = new Intent(LoginActivity.this, DashboardActivity.class);
                                 Log.d("TAG", "Intent: " + intent);
                                 startActivity(intent);
                                 finish();
@@ -133,7 +127,7 @@ public class Login extends AppCompatActivity {
                                     String msg = response.getString("message");
                                     alertFail(msg);
                                 } else {
-                                    Toast.makeText(Login.this, "Data tidak dapat di proses", Toast.LENGTH_SHORT).show();
+                                    Toast.makeText(LoginActivity.this, "Data tidak dapat di proses", Toast.LENGTH_SHORT).show();
                                 }
                             } catch (JSONException e) {
                                 e.printStackTrace();
@@ -148,7 +142,7 @@ public class Login extends AppCompatActivity {
                                 e.printStackTrace();
                             }
                         } else {
-                            Toast.makeText(Login.this, "Error" + code, Toast.LENGTH_SHORT).show();
+                            Toast.makeText(LoginActivity.this, "Error" + code, Toast.LENGTH_SHORT).show();
                         }
                     }
                 });

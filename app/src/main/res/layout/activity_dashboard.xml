@@ -1,71 +1,92 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/linearLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".DashboardActivity"
-    android:orientation ="vertical">
+    tools:context=".DashboardActivity">
 
     <TextView
         android:id="@+id/tUsername"
 
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:text="Uername" />
+        android:text="Uername"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/tEmail"
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:text="Email" />
+        android:text="Email"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tUsername" />
 
     <TextView
         android:id="@+id/tAlamat"
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:text="Alamat" />
+        android:layout_marginTop="1dp"
+        android:text="Alamat"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tEmail" />
 
     <TextView
         android:id="@+id/tTelepon"
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:text="Telepon" />
+        android:text="Telepon"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tAlamat" />
 
     <TextView
         android:id="@+id/createdAt"
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:text="Created At" />
+        android:layout_marginTop="1dp"
+        android:text="Created At"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tTelepon" />
 
     <TextView
         android:id="@+id/updatedAt"
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:text="Updated At" />
+        android:text="Updated At"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/createdAt" />
 
     <Button
         android:id="@+id/btnBack"
 
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="1dp"
         android:text="Back"
-        tools:layout_editor_absoluteX="158dp"
-        tools:layout_editor_absoluteY="113dp" />
+        app:layout_constraintStart_toStartOf="@+id/updatedAt"
+        app:layout_constraintTop_toBottomOf="@+id/updatedAt" />
 
     <Button
         android:id="@+id/btnLogout"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Logout"
-        tools:layout_editor_absoluteX="160dp"
-        tools:layout_editor_absoluteY="194dp" />
+        app:layout_constraintStart_toStartOf="@+id/btnBack"
+        app:layout_constraintTop_toBottomOf="@+id/btnBack" />
 
     <Button
         android:id="@+id/btnDetail"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Detail"
-        tools:layout_editor_absoluteX="161dp"
-        tools:layout_editor_absoluteY="281dp" />
-</LinearLayout>
+        app:layout_constraintStart_toStartOf="@+id/btnLogout"
+        app:layout_constraintTop_toBottomOf="@+id/btnLogout" />
+</androidx.constraintlayout.widget.ConstraintLayout>

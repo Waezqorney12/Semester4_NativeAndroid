@@ -4,5 +4,18 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/ic_splash_screen__3_"
-    tools:context=".SplashScreen"/>
+    android:background="#FFFFFF"
+    tools:context=".SplashScreen"
+
+    >
+
+    <ImageView
+        android:id="@+id/imageView7"
+        android:layout_width="585dp"
+        android:layout_height="891dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/laundry_splash" />
+</androidx.constraintlayout.widget.ConstraintLayout>
