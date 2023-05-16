@@ -92,6 +92,8 @@ public class DashboardActivity extends AppCompatActivity {
                         if (code == 200){
                             try {
                                 JSONObject response = new JSONObject(http.getResponse());
+                                String id = response.getString("id");
+                                Log.d("TAGS",id);
                                 String username = response.getString("username");
                                 String email = response.getString("email");
                                 String alamat = response.getString("alamat");
@@ -101,6 +103,7 @@ public class DashboardActivity extends AppCompatActivity {
                                 String updated_at = response.getString("updated_at");
 
                                 Intent intent = new Intent(DashboardActivity.this, ProfileActivity.class);
+                                intent.putExtra("id",id);
                                 intent.putExtra("username",username);
                                 intent.putExtra("email",email);
                                 intent.putExtra("alamat",alamat);
@@ -109,7 +112,7 @@ public class DashboardActivity extends AppCompatActivity {
                                 intent.putExtra("created_at",created_at);
                                 intent.putExtra("updated_at",updated_at);
                                 startActivity(intent);
-
+                                finish();
                             } catch (JSONException e) {
                                 e.printStackTrace();
                             }
@@ -148,11 +151,11 @@ public class DashboardActivity extends AppCompatActivity {
                         if (code == 200){
                             try {
                                 JSONObject response = new JSONObject(http.getResponse());
+                                String id = response.getString("id");
                                 String username = response.getString("username");
                                 String email = response.getString("email");
                                 String alamat = response.getString("alamat");
                                 String telepon = response.getString("telepon");
-
                                 String created_at = response.getString("created_at");
                                 String updated_at = response.getString("updated_at");
 

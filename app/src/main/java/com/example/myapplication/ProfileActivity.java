@@ -19,6 +19,7 @@ public class ProfileActivity extends AppCompatActivity {
     TextView username,alamat,email,telepon,createdAt,updatedAt;
     SharedPreferences sharedPreferences;
     String token;
+    String usernames,emails,alamats,telepons,createdAts,updatedAts;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -36,47 +37,44 @@ public class ProfileActivity extends AppCompatActivity {
         btnLogout = findViewById(R.id.bLogout);
 
         Intent intent = getIntent();
-
+        Bundle bundle = new Bundle();
+        if (bundle!=null){
+            bundle.putString("username",intent.getStringExtra("username"));
+            bundle.putString("email",intent.getStringExtra("email"));
+            bundle.putString("alamat",intent.getStringExtra("alamat"));
+            bundle.putString("telepon",intent.getStringExtra("telepon"));
+            bundle.putString("created_at",intent.getStringExtra("created_at"));
+            bundle.putString("updated_at",intent.getStringExtra("updated_at"));
+        }
         //Untuk menaruh di personal info
-        String usernames = intent.getStringExtra("username");
-        String emails = intent.getStringExtra("email");
-        String alamats = intent.getStringExtra("alamat");
-        String telepons = intent.getStringExtra("telepon");
-        String createdAts = intent.getStringExtra("created_at");
-        String updatedAts = intent.getStringExtra("updated_at");
 
-        username.setText(intent.getStringExtra("username"));
+
+        username.setText(bundle.getString("username"));
 
         btnPassword.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent1 = new Intent(ProfileActivity.this,ChangePassword.class);
-                intent1.putExtra("username",usernames);
-                intent1.putExtra("email",emails);
-                intent1.putExtra("alamat",alamats);
-                intent1.putExtra("telepon",telepons);
-                intent1.putExtra("created_at",createdAts);
-                intent1.putExtra("updated_at",updatedAts);
-                startActivity(intent1);
+                Intent intentPassword = new Intent(ProfileActivity.this,ChangePassword.class);
+                intentPassword.putExtras(bundle);
+
+                startActivity(intentPassword);
+
             }
         });
+
         btnLogout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 logout();
+                finish();
             }
         });
         btnPersonal.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intentz = new Intent(ProfileActivity.this,Personal.class);
-                intentz.putExtra("username",usernames);
-                intentz.putExtra("email",emails);
-                intentz.putExtra("alamat",alamats);
-                intentz.putExtra("telepon",telepons);
-                intentz.putExtra("created_at",createdAts);
-                intentz.putExtra("updated_at",updatedAts);
-                startActivity(intentz);
+                Intent intentPersonalInfo = new Intent(ProfileActivity.this,DetailProfileActivity.class);
+                intentPersonalInfo.putExtras(bundle);
+                startActivity(intentPersonalInfo);
             }
         });
         if (back != null){
@@ -84,12 +82,6 @@ public class ProfileActivity extends AppCompatActivity {
                 @Override
                 public void onClick(View v) {
                     Intent back = new Intent(ProfileActivity.this,DashboardActivity.class);
-//                    back.putExtra("username",usernames);
-//                    back.putExtra("email",emails);
-//                    back.putExtra("alamat",alamats);
-//                    back.putExtra("telepon",telepons);
-//                    back.putExtra("created_at",createdAts);
-//                    back.putExtra("updated_at",updatedAts);
 
                     startActivity(back);
                 }

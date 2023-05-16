@@ -40,12 +40,12 @@
         />
     <EditText
 
-        android:layout_marginTop="30dp"
+            android:layout_marginTop="30dp"
             android:id="@+id/txtemail"
             android:inputType="textEmailAddress"
             android:layout_width="350dp"
             android:layout_height="50dp"
-        android:paddingLeft="15dp"
+            android:paddingLeft="15dp"
             android:hint="Masukkan Email"
             android:layout_marginLeft="30dp"
             android:layout_marginRight="5dp"

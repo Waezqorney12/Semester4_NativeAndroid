@@ -27,6 +27,8 @@
                 android:gravity="center"
                 >
                 <ImageView
+                    android:id="@+id/iEditProfileGet"
+                    android:clickable="true"
                     android:layout_width="35dp"
                     android:layout_height="35dp"
                     android:src="@drawable/ic_baseline_person_pin_circle_24"
@@ -51,29 +53,7 @@
                 android:layout_alignParentEnd="true"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                >
-                <ImageView
-                    android:id="@+id/btnEditDetailProfile"
-                    android:clickable="true"
-                    android:layout_width="35dp"
-                    android:layout_height="35dp"
-                    android:src="@drawable/ic_baseline_edit_24"
-                    android:padding="5dp"
-                    />
-                <TextView
-                    android:id="@+id/textEditDetailProfile"
-                    android:clickable="true"
-                    android:text="Edit Information"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textSize="16sp"
-                    android:layout_margin="5dp"
-                    android:textStyle="bold|normal"
-                    android:textColor="#F8554A4A"
-
-                    />
-
-            </LinearLayout>
+                />
         </RelativeLayout>
         <LinearLayout
             android:layout_width="match_parent"
@@ -90,17 +70,31 @@
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
                 >
-                <TextView
-                    android:id="@+id/tDetailAlamatProfile"
-                    android:text="Jalan Sumber Sari"
-                    android:textSize="17sp"
-                    android:textColor="@color/black"
-                    android:textStyle="bold"
-                    android:gravity="center"
+                <EditText
+
+
+                    android:id="@+id/tAlamatEdit"
+
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-
+                    android:textColor="@color/black"
+                    android:textSize="17sp"
+                    android:hint="Masukkan Nomor Handphone"
+                    android:layout_marginStart="5dp"
+                    android:layout_marginBottom="15dp"
+                    android:background="@drawable/sa"
                     />
+<!--                <TextView-->
+<!--                    android:id="@+id/tDetailAlamatProfile"-->
+<!--                    android:text="Jalan Sumber Sari"-->
+<!--                    android:textSize="17sp"-->
+<!--                    android:textColor="@color/black"-->
+<!--                    android:textStyle="bold"-->
+<!--                    android:gravity="center"-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+
+<!--                    />-->
 <!--                <TextView-->
 <!--                    android:text="Perumnas Sumber Sari Gang 4 No.43,Jember"-->
 <!--                    android:textSize="13sp"-->
