@@ -51,7 +51,6 @@ public class Http {
             connection.setRequestProperty("Content-Type","application/json");
             connection.setRequestProperty("X-Requested-With","XMLHttpRequest");
             if (token){
-                Log.d("TAG","laler: "+token);
                 connection.setRequestProperty("Authorization","Bearer " + localStorage.getToken());
 
 
@@ -59,7 +58,6 @@ public class Http {
                 connection.setDoOutput(true);
             }if (data != null){
                 OutputStream os = connection.getOutputStream();
-                Log.d("TAG","laasdr: "+os);
                 os.write(data.getBytes());
                 os.flush();
                 os.close();
@@ -70,11 +68,9 @@ public class Http {
             if (statusCode >= 200 && statusCode <= 299){
                 //if response sukses
                 isr = new InputStreamReader(connection.getInputStream());
-                Log.d("TAG","Sukses: "+isr);
             }else{
                 //if response gagal
                 isr = new InputStreamReader(connection.getErrorStream());
-                Log.d("TAG","Gagal: "+isr);
             }
 
             BufferedReader br = new BufferedReader(isr);

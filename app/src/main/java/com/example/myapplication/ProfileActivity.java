@@ -39,6 +39,7 @@ public class ProfileActivity extends AppCompatActivity {
         Intent intent = getIntent();
         Bundle bundle = new Bundle();
         if (bundle!=null){
+            bundle.putString("id",intent.getStringExtra("id"));
             bundle.putString("username",intent.getStringExtra("username"));
             bundle.putString("email",intent.getStringExtra("email"));
             bundle.putString("alamat",intent.getStringExtra("alamat"));

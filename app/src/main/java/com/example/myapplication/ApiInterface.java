@@ -8,7 +8,7 @@ import retrofit2.http.POST;
 
 public interface ApiInterface {
     @FormUrlEncoded
-    //disesuaikan dengan routes yang ada pada laravel
+    //disesuaikan dengan routes api yang ada pada laravel
     @POST("forgot")
     Call<ResponseBody> forgotPassword(@Field("email") String email);
 }
