@@ -10,6 +10,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import org.json.JSONException;
@@ -17,8 +18,9 @@ import org.json.JSONObject;
 
 public class Register extends AppCompatActivity {
     EditText txtusername,txtpassword,txtemail,txtalamat,txttelepon,txtpasswordConfirmation;
-    Button btnBackRegist,btnSignUp;
+    Button btnSignUp;
     String username,password,email,alamat,telepon,confirmation;
+    ImageView btnBackRegist;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,7 +30,7 @@ public class Register extends AppCompatActivity {
         getSupportActionBar().hide();
 
 
-        btnBackRegist = findViewById(R.id.btnBackRegist);
+        btnBackRegist = findViewById(R.id.btnBackRegis);
         btnSignUp = findViewById(R.id.btnSignUp);
         txtusername = findViewById(R.id.txtusername);
         txtpassword = findViewById(R.id.txtpassword);

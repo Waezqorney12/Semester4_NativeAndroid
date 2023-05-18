@@ -94,6 +94,7 @@ public class ForgotPassword extends AppCompatActivity {
                     try {
                         JSONObject jsonObject = new JSONObject(response.body().string());
                         Toast.makeText(ForgotPassword.this, jsonObject.getString("message"), Toast.LENGTH_SHORT).show();
+
                         Log.d("TAGS","Status: " + jsonObject.getString("message"));
                     } catch (IOException | JSONException e) {
                         e.printStackTrace();

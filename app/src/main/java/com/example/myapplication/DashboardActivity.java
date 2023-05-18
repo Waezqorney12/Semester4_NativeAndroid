@@ -92,8 +92,8 @@ public class DashboardActivity extends AppCompatActivity {
                         if (code == 200){
                             try {
                                 JSONObject response = new JSONObject(http.getResponse());
-                                String id = response.getString("id");
-                                Log.d("TAGS",id);
+                                int id = Integer.parseInt(response.getString("id"));
+                                Log.d("TAGS", String.valueOf(id));
                                 String username = response.getString("username");
                                 String email = response.getString("email");
                                 String alamat = response.getString("alamat");
@@ -151,7 +151,7 @@ public class DashboardActivity extends AppCompatActivity {
                         if (code == 200){
                             try {
                                 JSONObject response = new JSONObject(http.getResponse());
-                                String id = response.getString("id");
+                                int id = response.getInt("id");
                                 String username = response.getString("username");
                                 String email = response.getString("email");
                                 String alamat = response.getString("alamat");

@@ -13,7 +13,8 @@ public class DetailProfileActivity extends AppCompatActivity {
 
     TextView tTeleponDetailProfile,tAlamatDetailProfile,tEMailDetailProfile,textEditDetailProfile,tIdDetailProfile,tUsernameDetailProfile;
     ImageView btnEditProfile,btnDetailBack;
-    String userId,emailDetail,usernameDetail,alamatDetail,teleponDetail,createdDetail,updatedDetail;
+    String emailDetail,usernameDetail,alamatDetail,teleponDetail,createdDetail,updatedDetail;
+    int userId;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -30,31 +31,27 @@ public class DetailProfileActivity extends AppCompatActivity {
         btnDetailBack = findViewById(R.id.btnDetailBack);
         btnEditProfile = findViewById(R.id.btnEditDetailProfile);
 
-        Intent intent = getIntent();
-        userId = intent.getStringExtra("id");
-        usernameDetail = intent.getStringExtra("username");
-        alamatDetail = intent.getStringExtra("alamat");
-        teleponDetail = intent.getStringExtra("telepon");
-        updatedDetail = intent.getStringExtra("updated_at");
-        createdDetail = intent.getStringExtra("created_at");
-        emailDetail = intent.getStringExtra("email");
 
-        tIdDetailProfile.setText(userId);
+        Intent intent = getIntent();
+        Bundle bundle = intent.getExtras();
+        if (bundle != null){
+            userId = bundle.getInt("id");
+            usernameDetail = bundle.getString("username");
+            emailDetail = bundle.getString("email");
+            alamatDetail = bundle.getString("alamat");
+            teleponDetail = bundle.getString("telepon");
+            updatedDetail = bundle.getString("crated_at");
+            createdDetail = bundle.getString("updated_at");
+
+        }
+
+        tIdDetailProfile.setText(String.valueOf(userId));
         tUsernameDetailProfile.setText(usernameDetail);
         tEMailDetailProfile.setText(emailDetail);
         tAlamatDetailProfile.setText(alamatDetail);
         tTeleponDetailProfile.setText(teleponDetail);
 
-        Bundle bundle = new Bundle();
-        if (bundle != null){
-            bundle.putString("id",intent.getStringExtra("id"));
-            bundle.putString("username",intent.getStringExtra("username"));
-            bundle.putString("email",intent.getStringExtra("email"));
-            bundle.putString("alamat",intent.getStringExtra("alamat"));
-            bundle.putString("telepon",intent.getStringExtra("telepon"));
-            bundle.putString("created_at",intent.getStringExtra("created_at"));
-            bundle.putString("updated_at",intent.getStringExtra("updated_at"));
-        }
+
 
 
 

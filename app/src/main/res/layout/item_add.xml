@@ -94,6 +94,7 @@
                     android:id="@+id/tDetailAlamatProfile"
                     android:text="Jalan Sumber Sari"
                     android:textSize="17sp"
+                    android:layout_marginStart="5dp"
                     android:textColor="@color/black"
                     android:textStyle="bold"
                     android:gravity="center"

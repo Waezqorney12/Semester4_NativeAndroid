@@ -9,6 +9,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
+import android.util.Patterns;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -25,6 +26,8 @@ public class ChangePassword extends AppCompatActivity {
     ImageView btnBack;
     SharedPreferences sharedPreferences;
     String emailText,oldPassword,newPassword,token;
+    int id;
+    String username,email,alamat,telepon,created_at,updated_at;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -37,9 +40,20 @@ public class ChangePassword extends AppCompatActivity {
         ePasswordNew = findViewById(R.id.ePasswordBaru);
         btnBack = findViewById(R.id.btnChangePassword);
         btnSubmit = findViewById(R.id.bSubmit);
-        getUser();
-
-        eEmail.setText(getIntent().getStringExtra("email"));
+        getSupportActionBar().hide();
+        Intent intent = getIntent();
+        Bundle bundle = intent.getExtras();
+        if (bundle!=null){
+            id = bundle.getInt("id");
+            username = bundle.getString("username");
+            email =bundle.getString("email");
+            alamat = bundle.getString("alamat");
+            telepon = bundle.getString("telepon");
+            created_at = bundle.getString("created_at");
+            updated_at = bundle.getString("updated_at");
+        }
+//
+        eEmail.setText(email);
 
 
 
@@ -52,9 +66,11 @@ public class ChangePassword extends AppCompatActivity {
                 oldPassword = ePasswordOld.getText().toString();
                 newPassword = ePasswordNew.getText().toString();
 
-                if (emailText.isEmpty()){
-                    Toast.makeText(ChangePassword.this, "Email tidak boleh kosong", Toast.LENGTH_SHORT).show();
-                }if(oldPassword.isEmpty()){
+                if (emailText.isEmpty()||!Patterns.EMAIL_ADDRESS.matcher(emailText).matches()){
+                   eEmail.setError("Isi email dengan benar");
+                   eEmail.requestFocus();
+                   return;
+                }if(oldPassword.isEmpty()||!Patterns.EMAIL_ADDRESS.matcher(email).matches()){
                     Toast.makeText(ChangePassword.this, "Password Lama tidak boleh kosong", Toast.LENGTH_SHORT).show();
                 }if (newPassword.isEmpty()){
                     Toast.makeText(ChangePassword.this, "Password Baru tidak boleh kosong", Toast.LENGTH_SHORT).show();
@@ -71,32 +87,16 @@ public class ChangePassword extends AppCompatActivity {
             }
         });
     }
-    private void getUser(){
-        Intent intent = getIntent();
-        String username = intent.getStringExtra("username");
-        String email = intent.getStringExtra("email");
-        String alamat = intent.getStringExtra("alamat");
-        String telepon = intent.getStringExtra("telepon");
-        String createdAt = intent.getStringExtra("created_at");
-        String updatedAt = intent.getStringExtra("updated_at");
 
-    }
     private void sendUser(){
-        Intent intent = getIntent();
-        String sUsername = intent.getStringExtra("username");
-        String sEmail = intent.getStringExtra("email");
-        String sAlamat = intent.getStringExtra("alamat");
-        String sTelepon = intent.getStringExtra("telepon");
-        String sCreatedAt = intent.getStringExtra("created_at");
-        String sUpdatedAt = intent.getStringExtra("updated_at");
 
         Intent intenz = new Intent(ChangePassword.this, ProfileActivity.class);
-        intenz.putExtra("username",sUsername);
-        intenz.putExtra("email",sEmail);
-        intenz.putExtra("alamat",sAlamat);
-        intenz.putExtra("telepon",sTelepon);
-        intenz.putExtra("created_at",sCreatedAt);
-        intenz.putExtra("updated_at",sUpdatedAt);
+        intenz.putExtra("username",username);
+        intenz.putExtra("email",email);
+        intenz.putExtra("alamat",alamat);
+        intenz.putExtra("telepon",telepon);
+        intenz.putExtra("created_at",created_at);
+        intenz.putExtra("updated_at",updated_at);
         startActivity(intenz);
 
 
@@ -140,8 +140,6 @@ public class ChangePassword extends AppCompatActivity {
                             successAlert("Data Berhasil Di ubah");
                             Log.d("Tags","Code Status: " + code);
 
-                        }if(code == 401){
-                            Toast.makeText(ChangePassword.this, "Data tidak bisa di proses", Toast.LENGTH_SHORT).show();
                         }else{
                             Toast.makeText(ChangePassword.this, "Gagal mengubah sandi", Toast.LENGTH_SHORT).show();
                         }

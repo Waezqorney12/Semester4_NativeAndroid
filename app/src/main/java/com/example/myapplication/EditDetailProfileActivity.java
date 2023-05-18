@@ -3,12 +3,10 @@ package com.example.myapplication;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.AlertDialog;
-import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.os.Parcelable;
 import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
@@ -17,19 +15,16 @@ import android.widget.Toast;
 
 import com.google.gson.Gson;
 
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
-import retrofit2.Retrofit;
-import retrofit2.converter.gson.GsonConverterFactory;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class EditDetailProfileActivity extends AppCompatActivity {
     TextView textUsernameProfile,textEmailProfile,textAlamatProfile,textTeleponProfile;
     ImageView btnBackEditProfile,btnSubmitEditProfile;
     TextView textIdProfile;
-    String username,email,alamat,telepon,token;
+    String username,email,alamat,telepon,token,created_at,updated_at;
     SharedPreferences sharedPreferences;
-    Integer id;
+    int id;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -49,37 +44,32 @@ public class EditDetailProfileActivity extends AppCompatActivity {
         btnSubmitEditProfile = findViewById(R.id.btnSubmitCheckDetailProfile);
 
         Intent intent = getIntent();
-        textIdProfile.setText(intent.getStringExtra("id"));
-        textUsernameProfile.setText(intent.getStringExtra("username"));
-        textEmailProfile.setText(intent.getStringExtra("email"));
-        textAlamatProfile.setText(intent.getStringExtra("alamat"));
-        textTeleponProfile.setText(intent.getStringExtra("telepon"));
-
-        Bundle bundle = new Bundle();
+        Bundle bundle = intent.getExtras();
         if(bundle!=null){
-            bundle.putString("id", String.valueOf(textIdProfile));
-            bundle.putString("username", String.valueOf(textUsernameProfile));
-            bundle.putString("email", String.valueOf(textEmailProfile));
-            bundle.putString("alamat", String.valueOf(textAlamatProfile));
-            bundle.putString("telepon", String.valueOf(textTeleponProfile));
-            bundle.putString("created_at",intent.getStringExtra("created_at"));
-            bundle.putString("updated_at",intent.getStringExtra("updated_at"));
+            id = bundle.getInt("id");
+            username = bundle.getString("username");
+            email = bundle.getString("email");
+            alamat = bundle.getString("alamat");
+            telepon = bundle.getString("telepon");
+            created_at = bundle.getString("created_at");
+            updated_at = bundle.getString("updated_at");
 
         }
+
+        textIdProfile.setText(String.valueOf(id));
+        textUsernameProfile.setText(username);
+        textEmailProfile.setText(email);
+        textAlamatProfile.setText(alamat);
+        textTeleponProfile.setText(telepon);
+
+
 
 
         btnBackEditProfile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intentBack = new Intent(EditDetailProfileActivity.this,DetailProfileActivity.class);
-                intentBack.putExtra("id",intent.getStringExtra("id"));
-                intentBack.putExtra("username",intent.getStringExtra("username"));
-                intentBack.putExtra("email",intent.getStringExtra("email"));
-                intentBack.putExtra("alamat",intent.getStringExtra("alamat"));
-                intentBack.putExtra("telepon",intent.getStringExtra("telepon"));
-                intentBack.putExtra("created_at",intent.getStringExtra("created_at"));
-                intentBack.putExtra("updated_at",intent.getStringExtra("updated_at"));
-
+                sendData(intentBack);
                 startActivity(intentBack);
             }
         });
@@ -130,7 +120,7 @@ public class EditDetailProfileActivity extends AppCompatActivity {
                         Log.d("Codes:", "sad"+String.valueOf(code));
                         Log.d("Respons:","sads:"+response);
                         if (code>=200 & code <= 299) {
-                            successAlert("Data berhasil di ubah",profile);
+                            successAlert("Data berhasil di ubah");
                         } else {
                             Toast.makeText(EditDetailProfileActivity.this, "Gagal memperbarui data profil", Toast.LENGTH_SHORT).show();
                         }
@@ -141,16 +131,81 @@ public class EditDetailProfileActivity extends AppCompatActivity {
 
 
     }
-    private void successAlert(String msg,ProfileModel profile){
+    private void successAlert(String msg){
         new AlertDialog.Builder(this)
                 .setTitle("Success")
                 .setIcon(R.drawable.ic_check)
                 .setMessage(msg).setPositiveButton("Ok", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-//                        returnToDetailProfile(profile);
+                        sendUser();
                     }
                 }).show();
+    }
+    private void sendUser(){
+        String url = getString(R.string.api_server)+"/user";
+
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                Http http = new Http(EditDetailProfileActivity.this,url);
+
+                http.setToken(true);
+                http.send();
+                Log.d("Tag","Http:"+http);
+
+                runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        Integer code = http.getStatusCode();
+                        if (code == 200){
+                            try {
+                                JSONObject response = new JSONObject(http.getResponse());
+                                 id = response.getInt("id");
+                                 username = response.getString("username");
+                                 email = response.getString("email");
+                                 alamat = response.getString("alamat");
+                                 telepon = response.getString("telepon");
+                                 created_at = response.getString("created_at");
+                                 updated_at = response.getString("updated_at");
+
+                                Intent intent = new Intent(EditDetailProfileActivity.this, DetailProfileActivity.class);
+                                intent.putExtra("id",id);
+                                intent.putExtra("username",username);
+                                intent.putExtra("email",email);
+                                intent.putExtra("alamat",alamat);
+                                intent.putExtra("telepon",telepon);
+
+                                intent.putExtra("created_at",created_at);
+                                intent.putExtra("updated_at",updated_at);
+                                startActivity(intent);
+                                finish();
+                            } catch (JSONException e) {
+                                e.printStackTrace();
+                            }
+                        }
+                        else if (code == 401) {
+                            Toast.makeText(EditDetailProfileActivity.this, "Unauthorized access. Please login again.", Toast.LENGTH_SHORT).show();
+                            startActivity(new Intent(EditDetailProfileActivity.this, LoginActivity.class));
+                            finish();
+                        }
+                        else {
+                            Toast.makeText(EditDetailProfileActivity.this, "Data tidak terdeteksi", Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                });
+            }
+        }).start();
+    }
+    private void sendData(Intent intent){
+        intent.putExtra("id",id);
+        intent.putExtra("username",username);
+        intent.putExtra("email",email);
+        intent.putExtra("alamat",alamat);
+        intent.putExtra("telepon",telepon);
+
+        intent.putExtra("created_at",created_at);
+        intent.putExtra("updated_at",updated_at);
     }
 //    private void returnToDetailProfile(ProfileModel profile) {
 //        Intent intent = new Intent(EditDetailProfileActivity.this, DetailProfileActivity.class);

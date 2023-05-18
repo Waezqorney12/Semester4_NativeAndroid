@@ -20,6 +20,7 @@ public class ProfileActivity extends AppCompatActivity {
     SharedPreferences sharedPreferences;
     String token;
     String usernames,emails,alamats,telepons,createdAts,updatedAts;
+    int id;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -32,32 +33,32 @@ public class ProfileActivity extends AppCompatActivity {
         sharedPreferences = getSharedPreferences("STORAGE_LOGIN_API", Context.MODE_PRIVATE);
         token = sharedPreferences.getString("TOKEN", "");
         Log.d("TAGS","TOKEN: " + token);
+
         btnPassword = findViewById(R.id.bPassword);
         btnPersonal = findViewById(R.id.bPersonal);
         btnLogout = findViewById(R.id.bLogout);
 
         Intent intent = getIntent();
-        Bundle bundle = new Bundle();
+        Bundle bundle = intent.getExtras();
         if (bundle!=null){
-            bundle.putString("id",intent.getStringExtra("id"));
-            bundle.putString("username",intent.getStringExtra("username"));
-            bundle.putString("email",intent.getStringExtra("email"));
-            bundle.putString("alamat",intent.getStringExtra("alamat"));
-            bundle.putString("telepon",intent.getStringExtra("telepon"));
-            bundle.putString("created_at",intent.getStringExtra("created_at"));
-            bundle.putString("updated_at",intent.getStringExtra("updated_at"));
+            id = bundle.getInt("id");
+            usernames = bundle.getString("username");
+            emails = bundle.getString("email");
+            alamats = bundle.getString("alamat");
+            telepons = bundle.getString("telepon");
+            createdAts = bundle.getString("created_at");
+            updatedAts = bundle.getString("updated_at");
         }
         //Untuk menaruh di personal info
 
 
-        username.setText(bundle.getString("username"));
+        username.setText(usernames);
 
         btnPassword.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intentPassword = new Intent(ProfileActivity.this,ChangePassword.class);
-                intentPassword.putExtras(bundle);
-
+                sendUser(intentPassword);
                 startActivity(intentPassword);
 
             }
@@ -74,7 +75,7 @@ public class ProfileActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intentPersonalInfo = new Intent(ProfileActivity.this,DetailProfileActivity.class);
-                intentPersonalInfo.putExtras(bundle);
+                sendUser(intentPersonalInfo);
                 startActivity(intentPersonalInfo);
             }
         });
@@ -126,6 +127,15 @@ public class ProfileActivity extends AppCompatActivity {
         }).start();
 
 
+    }
+    private void sendUser(Intent intent){
+        intent.putExtra("id",id);
+        intent.putExtra("username",usernames);
+        intent.putExtra("email",emails);
+        intent.putExtra("alamat",alamats);
+        intent.putExtra("telepon",telepons);
+        intent.putExtra("updated_at",updatedAts);
+        intent.putExtra("created_at",createdAts);
     }
 
 }
