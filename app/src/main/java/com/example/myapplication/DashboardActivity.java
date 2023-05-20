@@ -16,9 +16,8 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 public class DashboardActivity extends AppCompatActivity {
-    Button btnLogout;
-    Button btnBack;
-    Button btnDetail;
+    Button btnLogout,btnDetail,btnBack,btnHistory;
+
     TextView tUsername,tEmail,tAlamat,tTelepon,createdAt,updatedAt;
 
     SharedPreferences sharedPreferences;
@@ -46,7 +45,7 @@ public class DashboardActivity extends AppCompatActivity {
             btnBack = findViewById(R.id.btnBack);
             btnLogout = findViewById(R.id.btnLogout);
             btnDetail = findViewById(R.id.btnDetail);
-
+            btnHistory = findViewById(R.id.btnHistory);
             getUser();
 
             btnLogout.setOnClickListener(new View.OnClickListener() {
@@ -66,11 +65,25 @@ public class DashboardActivity extends AppCompatActivity {
             btnBack.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    Intent intents = new Intent(DashboardActivity.this, LoginActivity.class);
-                    startActivity(intents);
+
+                    if (token!=null){
+                        finish();
+                    }else{
+                        Intent intents = new Intent(DashboardActivity.this, LoginActivity.class);
+                        startActivity(intents);
+                    }
+
+                }
+            });
+            btnHistory.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent intent = new Intent(DashboardActivity.this,HistoryActivity.class);
+                    startActivity(intent);
                 }
             });
         }
+
     private void sendUser(){
         String url = getString(R.string.api_server)+"/user";
 

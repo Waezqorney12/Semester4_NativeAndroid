@@ -37,11 +37,14 @@
         <entry key="..\:/AdnroidProject/app/src/main/res/drawable/ic_splash_screen.xml" value="0.169" />
         <entry key="..\:/AdnroidProject/app/src/main/res/drawable/ic_splash_screen__3_.xml" value="0.2595" />
         <entry key="..\:/AdnroidProject/app/src/main/res/drawable/ic_warning.xml" value="0.169" />
+        <entry key="..\:/AdnroidProject/app/src/main/res/drawable/profile_background.xml" value="0.1835" />
         <entry key="..\:/AdnroidProject/app/src/main/res/drawable/radius_login.xml" value="0.212" />
         <entry key="..\:/AdnroidProject/app/src/main/res/drawable/sa.xml" value="0.212" />
         <entry key="..\:/AdnroidProject/app/src/main/res/drawable/secondlayer.xml" value="0.2085" />
         <entry key="..\:/AdnroidProject/app/src/main/res/drawable/solid.xml" value="0.224" />
+        <entry key="..\:/AdnroidProject/app/src/main/res/drawable/user_register.xml" value="0.1835" />
         <entry key="..\:/AdnroidProject/app/src/main/res/drawable/white_top_button.xml" value="0.2275" />
+        <entry key="..\:/AdnroidProject/app/src/main/res/layout-v21/activity_profile.xml" value="0.2375" />
         <entry key="..\:/AdnroidProject/app/src/main/res/layout/activity_change_password.xml" value="0.25" />
         <entry key="..\:/AdnroidProject/app/src/main/res/layout/activity_dashboard.xml" value="0.23385416666666667" />
         <entry key="..\:/AdnroidProject/app/src/main/res/layout/activity_dashboards.xml" value="0.25" />
@@ -51,10 +54,11 @@
         <entry key="..\:/AdnroidProject/app/src/main/res/layout/activity_edit_profile.xml" value="0.20416666666666666" />
         <entry key="..\:/AdnroidProject/app/src/main/res/layout/activity_forgot_password.xml" value="0.213768115942029" />
         <entry key="..\:/AdnroidProject/app/src/main/res/layout/activity_fragment_master_detail.xml" value="0.20380434782608695" />
+        <entry key="..\:/AdnroidProject/app/src/main/res/layout/activity_history.xml" value="0.264" />
         <entry key="..\:/AdnroidProject/app/src/main/res/layout/activity_login.xml" value="0.264" />
         <entry key="..\:/AdnroidProject/app/src/main/res/layout/activity_main.xml" value="0.264" />
         <entry key="..\:/AdnroidProject/app/src/main/res/layout/activity_personal.xml" value="0.23333333333333334" />
-        <entry key="..\:/AdnroidProject/app/src/main/res/layout/activity_profile.xml" value="0.2" />
+        <entry key="..\:/AdnroidProject/app/src/main/res/layout/activity_profile.xml" value="0.264" />
         <entry key="..\:/AdnroidProject/app/src/main/res/layout/activity_register.xml" value="0.264" />
         <entry key="..\:/AdnroidProject/app/src/main/res/layout/activity_splash_screen.xml" value="0.2" />
         <entry key="..\:/AdnroidProject/app/src/main/res/layout/activity_tst.xml" value="0.264" />
@@ -67,7 +71,7 @@
         <entry key="..\:/AdnroidProject/app/src/main/res/layout/fragment_second.xml" value="0.23385416666666667" />
         <entry key="..\:/AdnroidProject/app/src/main/res/layout/item_add.xml" value="0.4" />
         <entry key="..\:/AdnroidProject/app/src/main/res/layout/item_add_edit.xml" value="0.264" />
-        <entry key="..\:/AdnroidProject/app/src/main/res/layout/item_email.xml" value="0.6" />
+        <entry key="..\:/AdnroidProject/app/src/main/res/layout/item_email.xml" value="0.5279605263157895" />
         <entry key="..\:/AdnroidProject/app/src/main/res/layout/item_email_detail.xml" value="0.20416666666666666" />
         <entry key="..\:/AdnroidProject/app/src/main/res/layout/item_image.xml" value="0.264" />
         <entry key="..\:/AdnroidProject/app/src/main/res/layout/item_image_edit.xml" value="0.4" />

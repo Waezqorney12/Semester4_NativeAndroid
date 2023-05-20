@@ -115,6 +115,7 @@ public class LoginActivity extends AppCompatActivity {
                                 localStorage.setToken(token);
                                 Intent intent = new Intent(LoginActivity.this, DashboardActivity.class);
                                 Log.d("TAG", "Intent: " + intent);
+                                Toast.makeText(LoginActivity.this, "Selamat Datang di Aplikasi Laundry", Toast.LENGTH_SHORT).show();
                                 startActivity(intent);
                                 finish();
                             } catch (JSONException e) {

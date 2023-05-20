@@ -89,4 +89,12 @@
         android:text="Detail"
         app:layout_constraintStart_toStartOf="@+id/btnLogout"
         app:layout_constraintTop_toBottomOf="@+id/btnLogout" />
+
+    <Button
+        android:id="@+id/btnHistory"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="History"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnDetail" />
 </androidx.constraintlayout.widget.ConstraintLayout>
