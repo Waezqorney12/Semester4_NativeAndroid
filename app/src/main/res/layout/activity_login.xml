@@ -112,13 +112,15 @@
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/txtemail" />
 
+
                     <LinearLayout
                         android:id="@+id/linearLayout3"
                         android:layout_width="match_parent"
                         android:layout_height="80dp"
-                        android:layout_marginTop="48dp"
+                        android:layout_marginTop="32dp"
                         android:orientation="horizontal"
                         app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.0"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/txtpassword">
 
@@ -147,7 +149,6 @@
                             android:textColor="@color/black" />
                     </LinearLayout>
 
-
                     <TextView
 
                         android:id="@+id/forgotPassword2"
@@ -158,7 +159,7 @@
 
                         android:clickable="true"
                         android:text="Forgot Your Password"
-                        android:textColor="#93C6E7"
+                        android:textColor="@color/blue_dark"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/txtpassword" />
 
