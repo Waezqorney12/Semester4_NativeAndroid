@@ -16,7 +16,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 public class DashboardActivity extends AppCompatActivity {
-    Button btnLogout,btnDetail,btnBack,btnHistory;
+    Button btnLogout,btnDetail,btnBack,btnHistory,btnMain;
 
     TextView tUsername,tEmail,tAlamat,tTelepon,createdAt,updatedAt;
 
@@ -46,6 +46,7 @@ public class DashboardActivity extends AppCompatActivity {
             btnLogout = findViewById(R.id.btnLogout);
             btnDetail = findViewById(R.id.btnDetail);
             btnHistory = findViewById(R.id.btnHistory);
+            btnMain = findViewById(R.id.btnMain);
             getUser();
 
             btnLogout.setOnClickListener(new View.OnClickListener() {
@@ -79,6 +80,13 @@ public class DashboardActivity extends AppCompatActivity {
                 @Override
                 public void onClick(View v) {
                     Intent intent = new Intent(DashboardActivity.this,HistoryActivity.class);
+                    startActivity(intent);
+                }
+            });
+            btnMain.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent intent = new Intent(DashboardActivity.this,MainActivity.class);
                     startActivity(intent);
                 }
             });

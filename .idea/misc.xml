@@ -38,6 +38,7 @@
         <entry key="..\:/AdnroidProject/app/src/main/res/drawable/ic_splash_screen__3_.xml" value="0.2595" />
         <entry key="..\:/AdnroidProject/app/src/main/res/drawable/ic_warning.xml" value="0.169" />
         <entry key="..\:/AdnroidProject/app/src/main/res/drawable/profile_background.xml" value="0.1835" />
+        <entry key="..\:/AdnroidProject/app/src/main/res/drawable/radius_dashboard.xml" value="0.19" />
         <entry key="..\:/AdnroidProject/app/src/main/res/drawable/radius_login.xml" value="0.212" />
         <entry key="..\:/AdnroidProject/app/src/main/res/drawable/sa.xml" value="0.212" />
         <entry key="..\:/AdnroidProject/app/src/main/res/drawable/secondlayer.xml" value="0.2085" />
@@ -78,6 +79,7 @@
         <entry key="..\:/AdnroidProject/app/src/main/res/layout/item_image_edit.xml" value="0.4" />
         <entry key="..\:/AdnroidProject/app/src/main/res/layout/item_info.xml" value="0.264" />
         <entry key="..\:/AdnroidProject/app/src/main/res/layout/item_info_detail.xml" value="0.4" />
+        <entry key="..\:/AdnroidProject/app/src/main/res/layout/item_main.xml" value="0.1" />
         <entry key="..\:/AdnroidProject/app/src/main/res/layout/toolbar.xml" value="0.18154761904761904" />
         <entry key="..\:/AdnroidProject/app/src/main/res/layout/top_background_gradient.xml" value="0.1" />
         <entry key="..\:/AdnroidProject/app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml" value="0.169" />
