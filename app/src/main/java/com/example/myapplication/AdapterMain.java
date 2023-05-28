@@ -36,7 +36,7 @@ public class AdapterMain extends PagerAdapter {
     @Override
     public Object instantiateItem(@NonNull ViewGroup container, int position) {
         layoutInflater = LayoutInflater.from(context);
-        View view = layoutInflater.inflate(R.layout.activity_main, container, false);
+        View view = layoutInflater.inflate(R.layout.item_main, container, false);
             ImageView imageView;
             TextView paket,keterangan,harga;
 

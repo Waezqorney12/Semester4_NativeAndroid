@@ -1,8 +1,10 @@
 package com.example.myapplication;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -67,8 +69,9 @@ public class ProfileActivity extends AppCompatActivity {
         btnLogout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                logout();
-                finish();
+//                logout();
+//                finish();
+                showOption();
             }
         });
         btnPersonal.setOnClickListener(new View.OnClickListener() {
@@ -92,6 +95,28 @@ public class ProfileActivity extends AppCompatActivity {
             Toast.makeText(ProfileActivity.this, "Tidak bisa back", Toast.LENGTH_SHORT).show();
         }
 
+    }
+    private void showOption(){
+        AlertDialog.Builder builder = new AlertDialog.Builder(ProfileActivity.this);
+        builder.setTitle("Confirmation Logout");
+        builder.setMessage("Do you really want to exit?");
+
+        builder.setPositiveButton("Yes", new DialogInterface.OnClickListener(){
+
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+             logout();
+            }
+        });
+
+        builder.setNegativeButton("No", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+
+            }
+        });
+        AlertDialog dial = builder.create();
+        builder.show();
     }
     private void logout(){
         String url = getString(R.string.api_server)+"/logout";

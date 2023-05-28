@@ -17,9 +17,9 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 public class Register extends AppCompatActivity {
-    EditText txtusername,txtpassword,txtemail,txtalamat,txttelepon,txtpasswordConfirmation;
+    EditText txtusername,txtpassword,txtemail,txtpasswordConfirmation;
     Button btnSignUp;
-    String username,password,email,alamat,telepon,confirmation;
+    String username,password,email,confirmation;
     ImageView btnBackRegist;
 
     @Override
@@ -35,8 +35,7 @@ public class Register extends AppCompatActivity {
         txtusername = findViewById(R.id.txtusername);
         txtpassword = findViewById(R.id.txtpassword);
         txtemail = findViewById(R.id.txtemail);
-        txtalamat = findViewById(R.id.txtalamat);
-        txttelepon = findViewById(R.id.txttelepon);
+
         txtpasswordConfirmation = findViewById(R.id.txtpasswordConfirmation);
 
         btnBackRegist.setOnClickListener(new View.OnClickListener() {
@@ -59,10 +58,9 @@ public class Register extends AppCompatActivity {
         username = txtusername.getText().toString();
         password = txtpassword.getText().toString();
         email = txtemail.getText().toString();
-        alamat = txtalamat.getText().toString();
-        telepon = txttelepon.getText().toString();
+
         confirmation = txtpasswordConfirmation.getText().toString();
-        if (username.isEmpty() || password.isEmpty() || email.isEmpty() || alamat.isEmpty() || telepon.isEmpty()) {
+        if (username.isEmpty() || password.isEmpty() || email.isEmpty()) {
             alertFail("Isi bagian yang kosong");
         }if (!password.equals(confirmation)){
             alertFail("Password tidak cocok");
@@ -77,8 +75,6 @@ public class Register extends AppCompatActivity {
         try {
             params.put("username",username);
             params.put("email",email);
-            params.put("alamat",alamat);
-            params.put("telepon",telepon);
             params.put("password",password);
             params.put("password_confirmation",confirmation);
 
@@ -131,7 +127,7 @@ public class Register extends AppCompatActivity {
                 .setTitle("Success")
                 .setIcon(R.drawable.ic_check)
                 .setMessage(s)
-                .setPositiveButton("LoginActivity", new DialogInterface.OnClickListener() {
+                .setPositiveButton("OK", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         onBackPressed();

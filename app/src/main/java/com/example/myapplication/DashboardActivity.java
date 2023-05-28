@@ -3,6 +3,7 @@ package com.example.myapplication;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -66,13 +67,17 @@ public class DashboardActivity extends AppCompatActivity {
             btnBack.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
+                    String whatsapp = "081230662475";
 
-                    if (token!=null){
-                        finish();
-                    }else{
-                        Intent intents = new Intent(DashboardActivity.this, LoginActivity.class);
-                        startActivity(intents);
-                    }
+                    Uri uri = Uri.parse("https://api.whatsapp.com/send?phone=" + whatsapp);
+                    Intent intent = new Intent(Intent.ACTION_VIEW, uri);
+                    startActivity(intent);
+//                    if (token!=null){
+//                        finish();
+//                    }else{
+//                        Intent intents = new Intent(DashboardActivity.this, LoginActivity.class);
+//                        startActivity(intents);
+//                    }
 
                 }
             });
@@ -95,7 +100,7 @@ public class DashboardActivity extends AppCompatActivity {
     private void sendUser(){
         String url = getString(R.string.api_server)+"/user";
 
-        Log.d("Tag","Http:"+url);
+//        Log.d("Tag","Http:"+url);
 
         new Thread(new Runnable() {
             @Override
@@ -104,7 +109,7 @@ public class DashboardActivity extends AppCompatActivity {
 
                 http.setToken(true);
                 http.send();
-                Log.d("Tag","Http:"+http);
+//                Log.d("Tag","Http:"+http);
 
                 runOnUiThread(new Runnable() {
                     @Override
@@ -154,7 +159,7 @@ public class DashboardActivity extends AppCompatActivity {
     private void getUser(){
         String url = getString(R.string.api_server)+"/user";
 
-        Log.d("Tag","Http:"+url);
+//        Log.d("Tag","Http:"+url);
 
         new Thread(new Runnable() {
             @Override
@@ -223,7 +228,7 @@ public class DashboardActivity extends AppCompatActivity {
                         Integer code = http.getStatusCode();
                         if (code == 200){
                             SharedPreferences.Editor editor = sharedPreferences.edit();
-                            Log.d("Tag","Editor: " + editor);
+//                            Log.d("Tag","Editor: " + editor);
                             editor.remove("TOKEN");
                             editor.apply();
                             Intent intents = new Intent(DashboardActivity.this, LoginActivity.class);

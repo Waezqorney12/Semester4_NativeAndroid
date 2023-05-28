@@ -1,5 +1,6 @@
 package com.example.myapplication;
 
+//Model untuk pilihan paket
 public class ModelMain {
     private int image;
     private String tittle;

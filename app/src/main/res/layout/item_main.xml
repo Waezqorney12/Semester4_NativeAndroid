@@ -41,35 +41,35 @@
             android:layout_marginEnd="33dp"
             android:layout_marginBottom="100dp"
             android:fontFamily="@font/roboto_medium"
-            android:text="Paket Setrika"
+
             android:textColor="@color/black"
             android:textSize="14dp" />
 
         <TextView
-            android:layout_width="124dp"
-            android:layout_height="wrap_content"
             android:id="@+id/keteranganMain"
+            android:layout_width="145dp"
+            android:layout_height="wrap_content"
 
             android:layout_alignParentEnd="true"
             android:layout_alignParentBottom="true"
-            android:layout_marginEnd="33dp"
-            android:layout_marginBottom="82dp"
+            android:layout_marginEnd="12dp"
+            android:layout_marginBottom="61dp"
             android:fontFamily="@font/roboto_regular"
-            android:text="Dihitung per kilo"
+
             android:textColor="@color/black"
             android:textSize="14dp" />
 
         <TextView
+            android:id="@+id/hargaMain"
             android:layout_width="124dp"
             android:layout_height="wrap_content"
-            android:id="@+id/hargaMain"
 
             android:layout_alignParentEnd="true"
             android:layout_alignParentBottom="true"
             android:layout_marginEnd="33dp"
-            android:layout_marginBottom="33dp"
+            android:layout_marginBottom="18dp"
             android:fontFamily="@font/roboto_medium"
-            android:text="Rp.5000"
+
             android:textColor="@color/blue_font"
             android:textSize="20dp" />
     </RelativeLayout>
