@@ -133,7 +133,7 @@
                 android:layout_alignParentLeft="true"
                 android:paddingLeft="145dp"
                 android:paddingTop="15dp"
-                android:text="Paket Selimut"
+                android:text="Paket Selimute"
                 android:textStyle="bold"
                 android:textColor="#000" />
 
