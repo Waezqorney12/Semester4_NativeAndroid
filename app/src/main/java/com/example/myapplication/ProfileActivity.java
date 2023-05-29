@@ -69,8 +69,6 @@ public class ProfileActivity extends AppCompatActivity {
         btnLogout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-//                logout();
-//                finish();
                 showOption();
             }
         });
@@ -86,7 +84,7 @@ public class ProfileActivity extends AppCompatActivity {
             back.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    Intent back = new Intent(ProfileActivity.this,DashboardActivity.class);
+                    Intent back = new Intent(ProfileActivity.this,MainActivity.class);
 
                     startActivity(back);
                 }

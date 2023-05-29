@@ -23,21 +23,26 @@
                     android:id="@+id/welcome"
                     android:layout_width="115dp"
                     android:layout_height="wrap_content"
-                    android:layout_alignParentEnd="true"
+                    android:layout_alignParentStart="true"
+
                     android:layout_alignParentBottom="true"
-                    android:layout_marginEnd="265dp"
-                    android:layout_marginBottom="131dp"
+                    android:layout_marginStart="60dp"
+
+                    android:layout_marginBottom="120dp"
                     android:fontFamily="@font/roboto_light"
                     android:text="Welcome"
                     android:textColor="@color/white"
                     android:textSize="24dp" />
 
                 <ImageView
+                    android:id="@+id/btnCloseMain"
                     android:layout_width="30dp"
                     android:layout_height="30dp"
-                    android:layout_alignParentEnd="true"
+                    android:layout_alignParentStart="true"
+
                     android:layout_alignParentBottom="true"
-                    android:layout_marginEnd="352dp"
+                    android:layout_marginStart="30dp"
+
                     android:layout_marginBottom="179dp"
                     android:src="@drawable/cancel_24px" />
 
@@ -51,13 +56,15 @@
                     android:src="@drawable/bunderanpic" />
 
                 <TextView
+                    android:id="@+id/tUsernameMain"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:id="@+id/textPhone"
+                    android:layout_alignParentStart="true"
                     android:layout_alignParentEnd="true"
                     android:layout_alignParentBottom="true"
-                    android:layout_marginEnd="195dp"
-                    android:layout_marginBottom="108dp"
+                    android:layout_marginStart="60dp"
+
+                    android:layout_marginBottom="98dp"
                     android:fontFamily="@font/roboto_medium"
                     android:text="Waezqorney Huanfareyzo"
                     android:textColor="@color/white"
@@ -119,7 +126,7 @@
                                 android:gravity="center_horizontal">
 
                                 <ImageView
-                                    android:id="@+id/whatsappUser"
+                                    android:id="@+id/btnWhatsappMain"
                                     android:layout_width="match_parent"
                                     android:layout_height="50dp"
                                     android:layout_alignParentBottom="true"
@@ -134,7 +141,6 @@
                             <TextView
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:layout_below="@id/setrikaLayout"
                                 android:layout_marginTop="5dp"
                                 android:fontFamily="@font/montserrat_medium"
                                 android:text="WhatsApp"
@@ -158,7 +164,7 @@
                                 android:gravity="center_horizontal">
 
                                 <ImageView
-                                    android:id="@+id/mapUser"
+                                    android:id="@+id/btnMapMain"
                                     android:layout_width="match_parent"
                                     android:layout_height="50dp"
                                     android:layout_alignParentBottom="true"
@@ -173,7 +179,6 @@
                             <TextView
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:layout_below="@id/setrikaLayout"
                                 android:layout_marginTop="5dp"
                                 android:fontFamily="@font/montserrat_medium"
                                 android:text="Map"
@@ -197,13 +202,12 @@
                                 android:gravity="center_horizontal">
 
                                 <ImageView
-                                    android:id="@+id/cuciBasahHistory"
+                                    android:id="@+id/btnHistoryMain"
                                     android:layout_width="match_parent"
                                     android:layout_height="50dp"
                                     android:layout_alignParentBottom="true"
                                     android:layout_marginBottom="5dp"
                                     android:clickable="true"
-
                                     android:padding="2dp"
                                     android:src="@drawable/ic_baseline_access_time_24" />
 
@@ -213,7 +217,6 @@
                             <TextView
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:layout_below="@id/cuciBasahHistory"
                                 android:layout_marginTop="5dp"
                                 android:fontFamily="@font/montserrat_medium"
                                 android:text="History"
@@ -239,7 +242,7 @@
                                 android:gravity="center_horizontal">
 
                                 <ImageView
-                                    android:id="@+id/SettingHistory"
+                                    android:id="@+id/btnSettingMain"
                                     android:layout_width="match_parent"
                                     android:layout_height="50dp"
                                     android:layout_alignParentBottom="true"
@@ -254,7 +257,6 @@
                             <TextView
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:layout_below="@id/dryingCleaningHistory"
                                 android:layout_marginTop="5dp"
                                 android:fontFamily="@font/montserrat_medium"
                                 android:text="Setting"

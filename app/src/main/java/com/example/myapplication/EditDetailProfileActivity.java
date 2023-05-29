@@ -170,14 +170,7 @@ public class EditDetailProfileActivity extends AppCompatActivity {
                                  updated_at = response.getString("updated_at");
 
                                 Intent intent = new Intent(EditDetailProfileActivity.this, DetailProfileActivity.class);
-                                intent.putExtra("id",id);
-                                intent.putExtra("username",username);
-                                intent.putExtra("email",email);
-                                intent.putExtra("alamat",alamat);
-                                intent.putExtra("telepon",telepon);
-
-                                intent.putExtra("created_at",created_at);
-                                intent.putExtra("updated_at",updated_at);
+                                sendData(intent);
                                 startActivity(intent);
                                 finish();
                             } catch (JSONException e) {

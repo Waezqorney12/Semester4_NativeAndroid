@@ -6,7 +6,10 @@ import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.util.Log;
+import android.util.Patterns;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -38,6 +41,70 @@ public class Register extends AppCompatActivity {
 
         txtpasswordConfirmation = findViewById(R.id.txtpasswordConfirmation);
 
+        txtusername.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {}
+            @Override
+            public void afterTextChanged(Editable s) {
+                username = s.toString();
+                if (username.length() < 6 || username.length() > 30) {
+                    if (username.length() < 6) {
+                        txtusername.setError("Minimum 6 Characters");
+
+                    } else if (username.length() > 30) {
+                        txtusername.setError("Maximum 30 Characters");
+                    }
+                }
+
+            }
+        });
+
+        txtemail.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {}
+            @Override
+            public void afterTextChanged(Editable s) {
+                email = s.toString();
+                if (email.isEmpty() || !Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
+                    txtemail.setError("Invalid Email Address");
+                }
+            }
+        });
+
+        txtpassword.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {}
+            @Override
+            public void afterTextChanged(Editable s) {
+                password = s.toString();
+                if (password.isEmpty() || password.length() < 6) {
+                    txtpassword.setError("Fill your Password (Minimum 6 Characters)");
+
+                }
+            }
+        });
+
+        txtpasswordConfirmation.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {}
+            @Override
+            public void afterTextChanged(Editable s) {
+                confirmation = s.toString();
+                if (!confirmation.equals(password)) {
+                    txtpasswordConfirmation.setError("Passwords Don't Match");
+
+
+                }
+            }
+        });
         btnBackRegist.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -48,26 +115,16 @@ public class Register extends AppCompatActivity {
         btnSignUp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                checkRegist();
+                if (inputAuth() == true){
+                    sendRegister();
+                }else{
+
+                }
             }
         });
 
     }
 
-    private void checkRegist() {
-        username = txtusername.getText().toString();
-        password = txtpassword.getText().toString();
-        email = txtemail.getText().toString();
-
-        confirmation = txtpasswordConfirmation.getText().toString();
-        if (username.isEmpty() || password.isEmpty() || email.isEmpty()) {
-            alertFail("Isi bagian yang kosong");
-        }if (!password.equals(confirmation)){
-            alertFail("Password tidak cocok");
-        }else{
-            sendRegister();
-        }
-    }
 
     private void sendRegister() {
 
@@ -108,7 +165,7 @@ public class Register extends AppCompatActivity {
                             try {
                                 JSONObject response = new JSONObject(http.getResponse());
                                 String msg = response.getString("message");
-                                alertFail("msg");
+                                alertFail("Failed");
                             } catch (JSONException e) {
                                 e.printStackTrace();
                             }
@@ -147,4 +204,42 @@ public class Register extends AppCompatActivity {
                     }
                 }).show();
     }
+
+    private boolean inputAuth() {
+        String typeUsername = txtusername.getText().toString();
+        String typeEmail = txtemail.getText().toString();
+        String typePassword = txtpassword.getText().toString();
+        String typeConfirmation = txtpasswordConfirmation.getText().toString();
+
+        if (typeUsername.length() < 6 || typeUsername.length() > 30) {
+            if (typeUsername.length() < 6) {
+                txtusername.setError("Minimum 6 Characters");
+                txtusername.requestFocus();
+                return false;
+
+            } else if (typeUsername.length() > 30) {
+                txtusername.setError("Maximum 30 Characters");
+                txtusername.requestFocus();
+                return false;
+
+            }
+
+        }else if (typeEmail.isEmpty() || !Patterns.EMAIL_ADDRESS.matcher(typeEmail).matches()) {
+            txtemail.setError("Invalid Email Address");
+            txtemail.requestFocus();
+            return false;
+        }else if (typePassword.isEmpty() || typePassword.length() < 6) {
+            txtpassword.setError("Fill your Password (Minimum 6 Characters)");
+            txtpassword.requestFocus();
+            return false;
+        }else if (!typePassword.equals(typeConfirmation)) {
+            txtpasswordConfirmation.setError("Passwords Don't Match");
+            txtpasswordConfirmation.requestFocus();
+            return false;
+        }
+
+        return true;
+    }
+
+
 }

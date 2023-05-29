@@ -113,7 +113,7 @@ public class LoginActivity extends AppCompatActivity {
                                 String token = response.getString("token");
                                 Log.d("TAG", "token: " + token);
                                 localStorage.setToken(token);
-                                Intent intent = new Intent(LoginActivity.this, DashboardActivity.class);
+                                Intent intent = new Intent(LoginActivity.this, MainActivity.class);
                                 Log.d("TAG", "Intent: " + intent);
                                 Toast.makeText(LoginActivity.this, "Selamat Datang di Aplikasi Laundry", Toast.LENGTH_SHORT).show();
                                 startActivity(intent);

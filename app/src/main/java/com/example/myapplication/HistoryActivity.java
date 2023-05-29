@@ -21,7 +21,7 @@ public class HistoryActivity extends AppCompatActivity {
         btnBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intentHistory = new Intent(HistoryActivity.this,DashboardActivity.class);
+                Intent intentHistory = new Intent(HistoryActivity.this,MainActivity.class);
                 startActivity(intentHistory);
             }
         });

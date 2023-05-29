@@ -1,8 +1,6 @@
 package com.example.myapplication;
 
 public class ProfileModel {
-    //Menggunakan Private untuk mencegah perubahan yang brutal di luar class dan keamanan data di class tetap terjaga
-    //Sehingga ketika seseorang ingin mengubah nya maka harus menggunakan metode yang tersedia di tentukan di dalam class apabila tidak ada maka tidak bisa berubah
 
     private String id;
     private String username;
@@ -11,7 +9,7 @@ public class ProfileModel {
     private String telepon;
 
     public ProfileModel(String id, String username, String email, String alamat, String telepon){
-        //Menggunakan this bertujuan untuk menghindari shadowing.
+
         this.id = id;
         this.username = username;
         this.email = email;
