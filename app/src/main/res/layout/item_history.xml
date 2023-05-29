@@ -25,23 +25,35 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_marginStart="8dp">
+
             <TextView
                 android:id="@+id/itemTittleHistory"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="2dp"
+                android:fontFamily="@font/montserrat_medium"
                 android:text="Title"
                 android:textColor="@color/black"
                 android:textSize="20sp"
-                android:textStyle="bold"
-                android:fontFamily="@font/montserrat_medium"
-                android:layout_marginTop="16dp"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"/>
+                android:textStyle="bold" />
+
             <TextView
                 android:id="@+id/itemOrderHistory"
-                android:text="Order"
-                android:layout_below="@id/itemTittleHistory"
-                android:textColor="@color/black"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"/>
+                android:layout_height="wrap_content"
+                android:layout_below="@id/itemTittleHistory"
+                android:text="Order"
+                android:textColor="@color/black" />
+
+            <TextView
+                android:id="@+id/hargaItemHistoryActivity"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/itemOrderHistory"
+                android:textSize="20sp"
+                android:fontFamily="@font/montserrat_medium"
+                android:text="Order"
+                android:textColor="@color/blue_dark" />
 
         </RelativeLayout>
     </RelativeLayout>

@@ -33,8 +33,9 @@ public class AdapterHistory extends RecyclerView.Adapter<AdapterHistory.ViewHold
     public void onBindViewHolder(@NonNull AdapterHistory.ViewHolder holder, int position) {
         ModelHistory history = list.get(position);
         holder.image.setImageResource(history.getImage());
-        holder.title.setText(history.getNamaPaket());
+        holder.title.setText(history.getName());
         holder.order.setText(history.getOrder_status());
+        holder.price.setText(history.getPrice());
     }
 
     @Override
@@ -44,13 +45,14 @@ public class AdapterHistory extends RecyclerView.Adapter<AdapterHistory.ViewHold
 
     public class ViewHolder extends RecyclerView.ViewHolder {
         ImageView image;
-        TextView title, order;
+        TextView title, order, price;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             image = itemView.findViewById(R.id.itemImageHistory);
             title = itemView.findViewById(R.id.itemTittleHistory);
             order = itemView.findViewById(R.id.itemOrderHistory);
+            price = itemView.findViewById(R.id.hargaItemHistoryActivity);
         }
     }
 }

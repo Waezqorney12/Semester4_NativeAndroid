@@ -26,9 +26,9 @@ public class HistoryActivity extends AppCompatActivity {
         getSupportActionBar().hide();
 
         model = new ArrayList<>();
-        model.add(new ModelHistory(R.drawable.cardboard, "Order No.01", "Cuci Basah"));
-        model.add(new ModelHistory(R.drawable.cardboard, "Order No.02", "Setrika"));
-        model.add(new ModelHistory(R.drawable.cardboard, "Order No.03", "Dry Cleaning"));
+        model.add(new ModelHistory(R.drawable.cardboard, "Order No.01", "Cuci Basah","Rp.15000"));
+        model.add(new ModelHistory(R.drawable.cardboard, "Order No.02", "Setrika","Rp.12000"));
+        model.add(new ModelHistory(R.drawable.cardboard, "Order No.03", "Dry Cleaning","Rp.30000"));
 
         orderRV = findViewById(R.id.order_RV);
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(this);
@@ -50,7 +50,8 @@ public class HistoryActivity extends AppCompatActivity {
         btnSetrikaHistory.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                Intent intent = new Intent(HistoryActivity.this,PaketSetrikaHistory.class);
+                startActivity(intent);
             }
         });
 
@@ -58,6 +59,8 @@ public class HistoryActivity extends AppCompatActivity {
         btnCuciBasahHistory.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Intent intent = new Intent(HistoryActivity.this,PaketCuciBasahHistory.class);
+                startActivity(intent);
 
             }
         });
@@ -66,7 +69,8 @@ public class HistoryActivity extends AppCompatActivity {
         btnDryCleaningHistory.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                Intent intent = new Intent(HistoryActivity.this,PaketDryCleaningHistory.class);
+                startActivity(intent);
             }
         });
     }

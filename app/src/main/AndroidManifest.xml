@@ -17,9 +17,6 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
         <activity
-            android:name=".PaketDryCleaningHistory"
-            android:exported="false" />
-        <activity
             android:name=".PaketCuciBasahHistory"
             android:exported="false" />
         <activity
@@ -41,7 +38,7 @@
             android:name=".ChangePassword"
             android:exported="false" />
         <activity
-            android:name=".Personal"
+            android:name=".PaketDryCleaningHistory"
             android:exported="false" />
         <activity
             android:name=".ForgotPassword"
@@ -56,9 +53,6 @@
             android:label="Login" />
         <activity
             android:name=".ProfileActivity"
-            android:exported="false" />
-        <activity
-            android:name=".DashboardActivity"
             android:exported="false" />
         <activity
             android:name=".SplashScreen"
