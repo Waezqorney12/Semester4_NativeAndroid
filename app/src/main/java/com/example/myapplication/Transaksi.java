@@ -19,7 +19,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-
+        //ListPaket
         final CheckBox paket1 = findViewById(R.id.paketkiloan);
         final CheckBox paket2 = findViewById(R.id.paketselimut);
         final CheckBox paket3 = findViewById(R.id.paketjaket);
