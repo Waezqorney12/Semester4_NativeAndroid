@@ -34,7 +34,7 @@ public class ProfileActivity extends AppCompatActivity {
 
         sharedPreferences = getSharedPreferences("STORAGE_LOGIN_API", Context.MODE_PRIVATE);
         token = sharedPreferences.getString("TOKEN", "");
-        Log.d("TAGS","TOKEN: " + token);
+        Log.d("TAGS","TOKEN PROFILE: " + token);
 
         btnPassword = findViewById(R.id.bPassword);
         btnPersonal = findViewById(R.id.bPersonal);
@@ -87,6 +87,7 @@ public class ProfileActivity extends AppCompatActivity {
                     Intent back = new Intent(ProfileActivity.this,MainActivity.class);
 
                     startActivity(back);
+                    finish();
                 }
             });
         }else{

@@ -57,7 +57,6 @@ public class Register extends AppCompatActivity {
                         txtusername.setError("Maximum 30 Characters");
                     }
                 }
-
             }
         });
 
@@ -85,7 +84,6 @@ public class Register extends AppCompatActivity {
                 password = s.toString();
                 if (password.isEmpty() || password.length() < 6) {
                     txtpassword.setError("Fill your Password (Minimum 6 Characters)");
-
                 }
             }
         });
@@ -99,9 +97,7 @@ public class Register extends AppCompatActivity {
             public void afterTextChanged(Editable s) {
                 confirmation = s.toString();
                 if (!confirmation.equals(password)) {
-                    txtpasswordConfirmation.setError("Passwords Don't Match");
-
-
+                    txtpasswordConfirmation.setError("Passwords Doesn't Match");
                 }
             }
         });

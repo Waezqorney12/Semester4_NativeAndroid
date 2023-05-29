@@ -35,7 +35,7 @@ public class MainActivity extends AppCompatActivity {
     ViewPager viewPager;
     AdapterMain adapter;
     List<ModelMain> models;
-    ImageView btnHistory,btnMap,btnSetting,btnWhatsapp,btnClose;
+    ImageView btnHistory,btnMap,btnSetting,btnWhatsapp,btnCloseMain;
     String username,token,email,telepon,alamat,created_at,updated_at;
     int id;
     SharedPreferences sharedPreferences;
@@ -82,8 +82,15 @@ public class MainActivity extends AppCompatActivity {
         btnMap = findViewById(R.id.btnMapMain);
         btnSetting = findViewById(R.id.btnSettingMain);
         btnWhatsapp = findViewById(R.id.btnWhatsappMain);
-        btnClose = findViewById(R.id.btnCloseMain);
+        btnCloseMain = findViewById(R.id.buttonCloseMain);
 
+        btnHistory.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this,HistoryActivity.class);
+                startActivity(intent);
+            }
+        });
         btnSetting.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -92,15 +99,17 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-        btnClose.setOnClickListener(new View.OnClickListener() {
+        btnCloseMain.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if (token!=null){
-                        finish();
-                    }else{
-                        Intent intents = new Intent(MainActivity.this, LoginActivity.class);
-                        startActivity(intents);
-                    }
+                    System.exit(0);
+                }else{
+                    Intent intent = new Intent(MainActivity.this, LoginActivity.class);
+                    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
+                    startActivity(intent);
+                    finish();
+                }
             }
         });
 
@@ -175,7 +184,7 @@ public class MainActivity extends AppCompatActivity {
                             startActivity(paketSetrika);
                             break;
                         case 1:
-                            Intent paketCuciBasah = new Intent(MainActivity.this,ProfileActivity.class);
+                            Intent paketCuciBasah = new Intent(MainActivity.this,DetailProfileActivity.class);
                             startActivity(paketCuciBasah);
                             break;
                         case 2:
@@ -184,7 +193,7 @@ public class MainActivity extends AppCompatActivity {
                             break;
                     }
                 }
-                return false;
+                return true;
             }
         });
     }

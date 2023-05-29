@@ -17,6 +17,15 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
         <activity
+            android:name=".PaketDryCleaningHistory"
+            android:exported="false" />
+        <activity
+            android:name=".PaketCuciBasahHistory"
+            android:exported="false" />
+        <activity
+            android:name=".PaketSetrikaHistory"
+            android:exported="false" />
+        <activity
             android:name=".MainActivity"
             android:exported="false" />
         <activity

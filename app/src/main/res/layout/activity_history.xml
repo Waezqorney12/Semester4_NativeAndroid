@@ -23,7 +23,7 @@
         android:id="@+id/relativeLayout"
         android:layout_width="350dp"
         android:layout_height="200dp"
-        android:layout_marginTop="44dp"
+        android:layout_marginTop="50dp"
         android:background="@drawable/profile_background"
         android:elevation="30dp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -202,7 +202,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="276dp"
         android:fontFamily="@font/montserrate_semi"
-        android:text="(20)"
+        android:text="(3)"
         android:textColor="@color/black"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.026"
@@ -210,6 +210,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/order_RV"
         android:layout_width="357dp"
         android:layout_height="429dp"
         app:layout_constraintBottom_toBottomOf="parent"
