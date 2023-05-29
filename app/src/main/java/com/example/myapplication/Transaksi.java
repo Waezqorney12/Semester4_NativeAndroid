@@ -27,7 +27,7 @@ public class MainActivity extends AppCompatActivity {
         final CheckBox paket5 = findViewById(R.id.paketjeans);
 
 
-        //JUMLAH Pakete
+        //JUMLAH Paket
         final EditText jml_pkt1 = findViewById(R.id.jumlahpaketkiloan);
         final EditText jml_pkt2 = findViewById(R.id.jumlahpaketselimut);
         final EditText jml_pkt3 = findViewById(R.id.jumlahpaketjaket);
