@@ -3,12 +3,17 @@ package com.example.myapplication;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.AlertDialog;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
+import android.text.InputType;
 import android.util.Log;
+import android.view.MotionEvent;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -25,6 +30,8 @@ public class LoginActivity extends AppCompatActivity {
     Button btnLogin,btnRegist;
     SharedPreferences pref;
     LocalStorage localStorage;
+
+    boolean showPassword = false;
 
     String email,password;
     SharedPreferences.Editor editor;
@@ -44,6 +51,41 @@ public class LoginActivity extends AppCompatActivity {
         btnLogin = findViewById(R.id.btnlogin);
         btnRegist=findViewById(R.id.btnRegist);
         TextView forgot = findViewById(R.id.forgotPassword2);
+
+        Drawable eyeIcon = getResources().getDrawable(R.drawable.ic_baseline_remove_red_eye_24);
+        eyeIcon.setBounds(0,0,eyeIcon.getIntrinsicWidth(),eyeIcon.getIntrinsicHeight());
+
+        editPassword.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                final int DRAWABLE_RIGT = 2;
+                if (event.getAction() == MotionEvent.ACTION_UP){
+                    Drawable drawable = editPassword.getCompoundDrawables()[DRAWABLE_RIGT];
+                    if (drawable != null) {
+                        int drawableWidht = drawable.getBounds().width();
+                        int ClickExtra = 15;
+                        if (event.getRawX() >= (editPassword.getRight() - drawableWidht - ClickExtra)) {
+                            if (showPassword) {
+                                editPassword.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_VARIATION_PASSWORD);
+                                showPassword = false;
+                                editPassword.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_baseline_lock_24, 0, R.drawable.ic_baseline_remove_red_eye_24, 0);
+                            } else {
+                                editPassword.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_VARIATION_VISIBLE_PASSWORD);
+                                showPassword = true;
+                                editPassword.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_baseline_lock_24, 0, R.drawable.ic_baseline_remove_red_eye_24_on, 0);
+                            }
+                        }
+                    }
+                    editPassword.setSelection(editPassword.getText().length());
+                    editPassword.requestFocus();
+                    InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+                    imm.showSoftInput(editPassword, InputMethodManager.SHOW_IMPLICIT);
+
+                    return true;
+                }
+                return false;
+            }
+        });
 
         forgot.setOnClickListener(new View.OnClickListener() {
             @Override

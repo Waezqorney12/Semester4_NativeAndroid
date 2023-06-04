@@ -4,7 +4,6 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -37,18 +36,18 @@ public class AdapterMain extends PagerAdapter {
     public Object instantiateItem(@NonNull ViewGroup container, int position) {
         layoutInflater = LayoutInflater.from(context);
         View view = layoutInflater.inflate(R.layout.item_main, container, false);
-            ImageView imageView;
-            TextView paket,keterangan,harga;
+            TextView id,nama,telepon,alamat;
 
-            imageView = view.findViewById(R.id.imageMain);
-            paket = view.findViewById(R.id.paketMain);
-            keterangan = view.findViewById(R.id.keteranganMain);
-            harga = view.findViewById(R.id.hargaMain);
 
-            imageView.setImageResource(model.get(position).getImage());
-            paket.setText(model.get(position).getTittle());
-            keterangan.setText(model.get(position).getDesc());
-            harga.setText(model.get(position).getPrice());
+            id = view.findViewById(R.id.idMain);
+            nama = view.findViewById(R.id.outletMain);
+            telepon = view.findViewById(R.id.nomorMain);
+            alamat = view.findViewById(R.id.jalanMain);
+
+            id.setText(model.get(position).getId());
+            nama.setText(model.get(position).getNama());
+            telepon.setText(model.get(position).getTelepon());
+            alamat.setText(model.get(position).getAlamat());
 
             container.addView(view, 0);
             return view;

@@ -2,47 +2,48 @@ package com.example.myapplication;
 
 //Model untuk pilihan paket
 public class ModelMain {
-    private int image;
-    private String tittle;
-    private String desc;
-    private String price;
+    private String id;
+    private String nama;
+    private String telepon;
+    private String alamat;
 
-    public ModelMain(int image,String tittle,String desc,String price){
-        this.image = image;
-        this.tittle = tittle;
-        this.desc = desc;
-        this.price = price;
+    public ModelMain(String id,String nama,String telepon,String alamat){
+        this.id = id;
+        this.nama = nama;
+        this.telepon = telepon;
+        this.alamat = alamat;
     }
 
-    public int getImage() {
-        return image;
+    public String getId() {
+        return id;
     }
 
-    public void setImage(int image) {
-        this.image = image;
+    public void setId(String id) {
+        this.id = id;
     }
 
-    public String getTittle() {
-        return tittle;
+
+    public String getNama() {
+        return nama;
     }
 
-    public void setTittle(String tittle) {
-        this.tittle = tittle;
+    public void setNama(String nama) {
+        this.nama = nama;
     }
 
-    public String getDesc() {
-        return desc;
+    public String getTelepon() {
+        return telepon;
     }
 
-    public void setDesc(String desc) {
-        this.desc = desc;
+    public void setTelepon(String telepon) {
+        this.telepon = telepon;
     }
 
-    public String getPrice() {
-        return price;
+    public String getAlamat() {
+        return alamat;
     }
 
-    public void setPrice(String price) {
-        this.price = price;
+    public void setAlamat(String alamat) {
+        this.alamat = alamat;
     }
 }

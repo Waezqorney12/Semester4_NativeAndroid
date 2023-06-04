@@ -172,15 +172,33 @@ public class MainActivity extends AppCompatActivity {
 
 
         models = new ArrayList<>();
-        models.add(new ModelMain(R.drawable.setrika_foto,"Paket Setrika","Khusus untuk menyetrika pakaian","Rp.12000"));
-        models.add(new ModelMain(R.drawable.cuci_basah_foto,"Paket Cuci Basah","Khusus untuk mencuci pakaian","Rp.15000"));
-        models.add(new ModelMain(R.drawable.dry_cleaning_foto,"Paket Dry Cleaning","Khusus untuk mengeringkan pakaian","Rp.10000"));
+        RetrofitClass.ApiOutlet apiOutlet = RetrofitClass.getClient().create(RetrofitClass.ApiOutlet.class);
+        Call<List<ModelMain>> call = apiOutlet.getOutlet();
+
+        call.enqueue(new Callback<List<ModelMain>>() {
+            @Override
+            public void onResponse(Call<List<ModelMain>> call, Response<List<ModelMain>> response) {
+                if (response.isSuccessful()){
+                    List<ModelMain> outletBody = response.body();
+                    Log.d("TAGS","Response: " + response);
+                    if (outletBody!=null){
+                        models.addAll(outletBody);
+                        adapter.notifyDataSetChanged();
+                    }
+                }
+            }
+
+            @Override
+            public void onFailure(Call<List<ModelMain>> call, Throwable t) {
+
+            }
+        });
 
         adapter = new AdapterMain(models,this);
 
         viewPager = findViewById(R.id.viewPager);
         viewPager.setAdapter(adapter);
-        viewPager.setPadding(0,0,450,50);
+        viewPager.setPadding(10,0,250,50);
 
 //
         viewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
@@ -206,34 +224,35 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        viewPager.setOnTouchListener(new View.OnTouchListener() {
-            @Override
-            public boolean onTouch(View v, MotionEvent event) {
-                if (event.getAction() == MotionEvent.ACTION_UP && !isScrolling){
-                    switch (lastPosition){
-                        case 0:
-                            Intent paketSetrika = new Intent(MainActivity.this,ProfileActivity.class);
-                            startActivity(paketSetrika);
-                            break;
-                        case 1:
-                            Intent paketCuciBasah = new Intent(MainActivity.this,DetailProfileActivity.class);
-                            startActivity(paketCuciBasah);
-                            break;
-                        case 2:
-                            Intent paketDryCleaning = new Intent(MainActivity.this,HistoryActivity.class);
-                            startActivity(paketDryCleaning);
-                            break;
-                    }
-                }
-                return false;
-            }
-        });
+//        viewPager.setOnTouchListener(new View.OnTouchListener() {
+//            @Override
+//            public boolean onTouch(View v, MotionEvent event) {
+//                if (event.getAction() == MotionEvent.ACTION_UP && !isScrolling){
+//                    switch (lastPosition){
+//                        case 0:
+//                            Intent paketSetrika = new Intent(MainActivity.this,ProfileActivity.class);
+//                            startActivity(paketSetrika);
+//                            break;
+//                        case 1:
+//                            Intent paketCuciBasah = new Intent(MainActivity.this,DetailProfileActivity.class);
+//                            startActivity(paketCuciBasah);
+//                            break;
+//                        case 2:
+//                            Intent paketDryCleaning = new Intent(MainActivity.this,HistoryActivity.class);
+//                            startActivity(paketDryCleaning);
+//                            break;
+//                    }
+//                }
+//                return false;
+//            }
+//        });
     }
 
     private void getOwner(OwnerCallback callback) {
         new Thread(new Runnable() {
             @Override
             public void run() {
+
                 String URL = getString(R.string.api_server)+"/";
                 Retrofit retrofit = new Retrofit.Builder()
                         .baseUrl(URL)
