@@ -12,48 +12,74 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
-        
+
         <ImageView
             android:id="@+id/itemImageHistory"
             android:layout_width="50dp"
             android:layout_height="50dp"
-            android:layout_marginTop="16dp"
             android:layout_marginStart="8dp"
-            android:background="@drawable/bg_header"/>
+            android:layout_marginTop="16dp"
+            android:background="@drawable/bg_header"
+            android:src="@drawable/cardboard"/>
+
         <RelativeLayout
-            android:layout_toEndOf="@+id/itemImageHistory"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_marginStart="8dp">
+            android:layout_marginStart="8dp"
+            android:layout_toEndOf="@+id/itemImageHistory">
 
             <TextView
-                android:id="@+id/itemTittleHistory"
-                android:layout_width="match_parent"
+                android:id="@+id/invoiceHistory"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="2dp"
                 android:fontFamily="@font/montserrat_medium"
-                android:text="Title"
+                android:text="INV2023060316"
                 android:textColor="@color/black"
-                android:textSize="20sp"
+                android:textSize="16sp"
                 android:textStyle="bold" />
 
+            <RelativeLayout
+                android:layout_width="70dp"
+                android:layout_height="30dp"
+                android:layout_alignParentEnd="true"
+                android:layout_marginLeft="220dp"
+
+                android:layout_marginTop="30dp"
+                android:layout_marginEnd="36dp"
+                android:background="@drawable/firstlayer">
+
+                <TextView
+                    android:id="@+id/statusHistory"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="5dp"
+                    android:fontFamily="@font/montserrat_medium"
+                    android:text="baru"
+                    android:textColor="@color/black"
+                    android:textSize="12sp" />
+            </RelativeLayout>
+
             <TextView
-                android:id="@+id/itemOrderHistory"
+                android:id="@+id/tanggalHistory"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/itemTittleHistory"
-                android:text="Order"
+                android:layout_below="@id/invoiceHistory"
+                android:layout_marginTop="2dp"
+                android:text="2023-06-09"
                 android:textColor="@color/black" />
 
             <TextView
-                android:id="@+id/hargaItemHistoryActivity"
+                android:id="@+id/namaTokoHistory"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/itemOrderHistory"
-                android:textSize="20sp"
+                android:layout_below="@id/tanggalHistory"
+                android:layout_marginTop="9dp"
                 android:fontFamily="@font/montserrat_medium"
-                android:text="Order"
-                android:textColor="@color/blue_dark" />
+                android:text="Mafia Pentol"
+                android:textColor="@color/blue_dark"
+                android:textSize="16sp" />
 
         </RelativeLayout>
     </RelativeLayout>

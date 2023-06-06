@@ -34,7 +34,7 @@ public class PaketCuciBasahHistory extends AppCompatActivity {
         });
 
         model = new ArrayList<>();
-        model.add(new ModelHistory(R.drawable.cardboard, "Order No.01", "Cuci Basah","Rp.15000"));
+//        model.add(new ModelHistory(R.drawable.cardboard, "Order No.01", "Cuci Basah","Rp.15000"));
 
 
         orderCB = findViewById(R.id.order_CB);

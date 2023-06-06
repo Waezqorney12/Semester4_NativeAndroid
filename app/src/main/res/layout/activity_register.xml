@@ -116,6 +116,8 @@
         android:drawablePadding="10dp"
         android:hint="Masukkan Password"
         android:inputType="textPassword"
+        android:drawableRight="@drawable/ic_baseline_remove_red_eye_24"
+        android:paddingRight="15dp"
         android:paddingLeft="15dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

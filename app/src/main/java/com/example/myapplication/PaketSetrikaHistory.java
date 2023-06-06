@@ -35,7 +35,7 @@ public class PaketSetrikaHistory extends AppCompatActivity {
         });
 
         model = new ArrayList<>();
-        model.add(new ModelHistory(R.drawable.cardboard, "Order No.02", "Setrika","Rp.12000"));
+//        model.add(new ModelHistory(R.drawable.cardboard, "Order No.02", "Setrika","Rp.12000"));
 
 
         orderST = findViewById(R.id.order_ST);

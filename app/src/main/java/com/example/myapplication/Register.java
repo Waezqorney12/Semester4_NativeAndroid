@@ -3,14 +3,19 @@ package com.example.myapplication;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.AlertDialog;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.text.Editable;
+import android.text.InputType;
 import android.text.TextWatcher;
 import android.util.Log;
 import android.util.Patterns;
+import android.view.MotionEvent;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -24,6 +29,8 @@ public class Register extends AppCompatActivity {
     Button btnSignUp;
     String username,password,email,confirmation;
     ImageView btnBackRegist;
+
+    boolean showPassword = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,6 +48,38 @@ public class Register extends AppCompatActivity {
 
         txtpasswordConfirmation = findViewById(R.id.txtpasswordConfirmation);
 
+        txtpassword.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                int DRAWABLE_RIGHT = 2;
+                if (event.getAction()==MotionEvent.ACTION_UP){
+                    Drawable drawable = txtpassword.getCompoundDrawables()[DRAWABLE_RIGHT];
+                    if (drawable != null){
+                        int DrawableWidht = drawable.getBounds().width();
+                        int ExtraSpace = 15;
+                        if (event.getRawX()>= (txtpassword.getWidth() - DrawableWidht - ExtraSpace)){
+                            if (showPassword){
+                                txtpassword.setInputType(InputType.TYPE_CLASS_TEXT|InputType.TYPE_TEXT_VARIATION_PASSWORD);
+                                showPassword = false;
+                                txtpassword.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_baseline_lock_24,0,R.drawable.ic_baseline_remove_red_eye_24,0);
+                            }else{
+                                txtpassword.setInputType(InputType.TYPE_CLASS_TEXT|InputType.TYPE_TEXT_VARIATION_VISIBLE_PASSWORD);
+                                showPassword = true;
+                                txtpassword.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_baseline_lock_24,0,R.drawable.ic_baseline_remove_red_eye_24_on,0);
+                            }
+                        }
+
+                    }
+                    txtpassword.setSelection(txtpassword.getText().length());
+                    txtpassword.requestFocus();
+                    InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+                    imm.showSoftInput(txtpassword, InputMethodManager.SHOW_IMPLICIT);
+
+                    return true;
+                }
+                return false;
+            }
+        });
         txtusername.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
@@ -53,7 +92,8 @@ public class Register extends AppCompatActivity {
                     if (username.length() < 6) {
                         txtusername.setError("Minimum 6 Characters");
 
-                    } else if (username.length() > 30) {
+                    } else {
+                        username.length();
                         txtusername.setError("Maximum 30 Characters");
                     }
                 }

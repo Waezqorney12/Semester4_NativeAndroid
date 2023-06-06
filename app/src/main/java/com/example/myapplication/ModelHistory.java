@@ -1,50 +1,63 @@
 package com.example.myapplication;
 
 public class ModelHistory {
-    private int image;
-    private String name;
-    private String order_status;
-    private String price;
+    private OutletData id_outlet_data;
+    private String kd_invoice;
+    private String status;
+    private String tanggal_pesan;
 
-    public ModelHistory(int image, String name, String order_status,String price) {
-        this.image = image;
-        this.name = name;
-        this.order_status = order_status;
-        this.price = price;
+    public ModelHistory(OutletData id_outlet_data, String kd_invoice, String status, String tanggal_pesan) {
+        this.id_outlet_data = id_outlet_data;
+        this.kd_invoice = kd_invoice;
+        this.status = status;
+        this.tanggal_pesan = tanggal_pesan;
     }
 
-    public int getImage() {
-
-        return image;
+    public OutletData getId_outlet_data() {
+        return id_outlet_data;
     }
 
-
-
-    public void setImage(int image) {
-        this.image = image;
+    public void setId_outlet_data(OutletData id_outlet_data) {
+        this.id_outlet_data = id_outlet_data;
     }
 
-    public String getName() {
-        return name;
+    public String getKd_invoice() {
+        return kd_invoice;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setKd_invoice(String kd_invoice) {
+        this.kd_invoice = kd_invoice;
     }
 
-    public String getOrder_status() {
-        return order_status;
+    public String getStatus() {
+        return status;
     }
 
-    public void setOrder_status(String order_status) {
-        this.order_status = order_status;
+    public void setStatus(String status) {
+        this.status = status;
     }
 
-    public String getPrice() {
-        return price;
+    public String getTanggal_pesan() {
+        return tanggal_pesan;
     }
 
-    public void setPrice(String price) {
-        this.price = price;
+    public void setTanggal_pesan(String tanggal_pesan) {
+        this.tanggal_pesan = tanggal_pesan;
+    }
+
+    public class OutletData {
+        private String nama;
+        public OutletData(String nama) {
+
+            this.nama = nama;
+
+        }
+        public String getNama() {
+            return nama;
+        }
+        public void setNama(String nama) {
+            this.nama = nama;
+        }
     }
 }
+

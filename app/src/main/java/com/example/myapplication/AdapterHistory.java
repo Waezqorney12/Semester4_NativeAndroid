@@ -4,7 +4,6 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -32,10 +31,11 @@ public class AdapterHistory extends RecyclerView.Adapter<AdapterHistory.ViewHold
     @Override
     public void onBindViewHolder(@NonNull AdapterHistory.ViewHolder holder, int position) {
         ModelHistory history = list.get(position);
-        holder.image.setImageResource(history.getImage());
-        holder.title.setText(history.getName());
-        holder.order.setText(history.getOrder_status());
-        holder.price.setText(history.getPrice());
+
+        holder.invoice.setText(history.getKd_invoice());
+        holder.status.setText(history.getStatus());
+        holder.tanggal.setText(history.getTanggal_pesan());
+        holder.name.setText(history.getId_outlet_data().getNama());
     }
 
     @Override
@@ -44,15 +44,15 @@ public class AdapterHistory extends RecyclerView.Adapter<AdapterHistory.ViewHold
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
-        ImageView image;
-        TextView title, order, price;
+
+        TextView name,invoice, status, tanggal;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
-            image = itemView.findViewById(R.id.itemImageHistory);
-            title = itemView.findViewById(R.id.itemTittleHistory);
-            order = itemView.findViewById(R.id.itemOrderHistory);
-            price = itemView.findViewById(R.id.hargaItemHistoryActivity);
+             name = itemView.findViewById(R.id.namaTokoHistory);
+             invoice = itemView.findViewById(R.id.invoiceHistory);
+             status = itemView.findViewById(R.id.statusHistory);
+             tanggal = itemView.findViewById(R.id.tanggalHistory);
         }
     }
 }

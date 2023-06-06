@@ -7,9 +7,12 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
+import android.text.InputType;
 import android.util.Log;
 import android.util.Patterns;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -28,6 +31,8 @@ public class ChangePassword extends AppCompatActivity {
     String emailText,oldPassword,newPassword,token;
     int id;
     String username,email,alamat,telepon,created_at,updated_at;
+
+    boolean showPassword = false;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -35,12 +40,17 @@ public class ChangePassword extends AppCompatActivity {
 
         sharedPreferences = getSharedPreferences("STORAGE_LOGIN_API", Context.MODE_PRIVATE);
         token = sharedPreferences.getString("TOKEN", "");
+
+
         eEmail = findViewById(R.id.eEmail);
         ePasswordOld = findViewById(R.id.ePasswordLama);
         ePasswordNew = findViewById(R.id.ePasswordBaru);
+
         btnBack = findViewById(R.id.btnChangePassword);
         btnSubmit = findViewById(R.id.bSubmit);
+
         getSupportActionBar().hide();
+
         Intent intent = getIntent();
         Bundle bundle = intent.getExtras();
         if (bundle!=null){
@@ -54,7 +64,30 @@ public class ChangePassword extends AppCompatActivity {
         }
 //
         eEmail.setText(email);
-
+        ePasswordOld.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                int Drawable_Right = 15;
+                if (event.getAction() == MotionEvent.ACTION_UP){
+                    Drawable icon =  ePasswordOld.getCompoundDrawables()[Drawable_Right];
+                    if (icon != null){
+                        int iconWidht = icon.getBounds().width();
+                        int extraSpace = 15;
+                        if (event.getRawX() >= (ePasswordOld.getRight() - iconWidht - extraSpace)){
+                            ePasswordOld.setInputType(InputType.TYPE_CLASS_TEXT|InputType.TYPE_TEXT_VARIATION_PASSWORD);
+                            showPassword = false;
+                            ePasswordOld.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_baseline_lock_24,0,R.drawable.ic_baseline_remove_red_eye_24,0);
+                        }else{
+                            ePasswordOld.setInputType(InputType.TYPE_CLASS_TEXT|InputType.TYPE_TEXT_VARIATION_VISIBLE_PASSWORD);
+                            showPassword = true;
+                            ePasswordOld.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_baseline_lock_24,0,R.drawable.ic_baseline_remove_red_eye_24_on,0);
+                        }
+                        return  true;
+                    }
+                }
+                return false;
+            }
+        });
 
 
 

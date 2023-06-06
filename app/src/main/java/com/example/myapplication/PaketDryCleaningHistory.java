@@ -35,7 +35,7 @@ public class PaketDryCleaningHistory extends AppCompatActivity {
         });
 
         model = new ArrayList<>();
-        model.add(new ModelHistory(R.drawable.cardboard, "Order No.03", "Dry Cleaning","Rp.10000"));
+//        model.add(new ModelHistory(R.drawable.cardboard, "Order No.03", "Dry Cleaning","Rp.10000"));
 
 
         orderDC = findViewById(R.id.order_DC);
