@@ -64,32 +64,9 @@ public class HistoryActivity extends AppCompatActivity {
         });
 
         btnSetrikaHistory = findViewById(R.id.setrikaHistory);
-        btnSetrikaHistory.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(HistoryActivity.this,PaketSetrikaHistory.class);
-                startActivity(intent);
-            }
-        });
-
         btnCuciBasahHistory = findViewById(R.id.cuciBasahHistory);
-        btnCuciBasahHistory.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(HistoryActivity.this,PaketCuciBasahHistory.class);
-                startActivity(intent);
-
-            }
-        });
-
         btnDryCleaningHistory = findViewById(R.id.dryingCleaningHistory);
-        btnDryCleaningHistory.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(HistoryActivity.this,PaketDryCleaningHistory.class);
-                startActivity(intent);
-            }
-        });
+
     }
 
 

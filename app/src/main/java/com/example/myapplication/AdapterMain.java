@@ -1,6 +1,7 @@
 package com.example.myapplication;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -19,6 +20,8 @@ public class AdapterMain extends PagerAdapter {
     public AdapterMain(List<ModelMain> model, Context context) {
         this.model = model;
         this.context = context;
+
+
     }
 
     @Override
@@ -58,4 +61,30 @@ public class AdapterMain extends PagerAdapter {
     public void destroyItem(@NonNull ViewGroup container, int position, @NonNull Object object) {
         container.removeView((View)object);
     }
+    public void openActivity(int position) {
+        if (position >= 0 && position < model.size()) {
+            ModelMain selectedModel = model.get(position);
+            Intent intent;
+
+            // Tentukan aktivitas yang akan dibuka berdasarkan posisi item
+            if (position == 0) {
+                intent = new Intent(context, TransactionActivity.class);
+            } else if (position == 1) {
+                intent = new Intent(context, TransactionActivity.class);
+            } else if (position == 2) {
+                intent = new Intent(context, TransactionActivity.class);
+            } else {
+                // Tambahkan kondisi lain di sini jika ada lebih banyak pilihan
+                return;
+            }
+
+            String id = selectedModel.getId();
+            intent.putExtra("id",id);
+            // Kirim data tambahan ke aktivitas yang akan dibuka
+            // intent.putExtra("key", value);
+
+            context.startActivity(intent);
+        }
+    }
+
 }

@@ -18,6 +18,7 @@ import android.location.Location;
 import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -181,9 +182,10 @@ public class MainActivity extends AppCompatActivity {
             public void onResponse(Call<List<ModelMain>> call, Response<List<ModelMain>> response) {
                 if (response.isSuccessful()){
                     List<ModelMain> outletBody = response.body();
-                    Log.d("TAGS","Response: " + response);
+                    Log.d("TAGS","Response: " + outletBody);
                     if (outletBody!=null){
                         models.addAll(outletBody);
+
                         adapter.notifyDataSetChanged();
                     }
                 }
@@ -225,28 +227,16 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-//        viewPager.setOnTouchListener(new View.OnTouchListener() {
-//            @Override
-//            public boolean onTouch(View v, MotionEvent event) {
-//                if (event.getAction() == MotionEvent.ACTION_UP && !isScrolling){
-//                    switch (lastPosition){
-//                        case 0:
-//                            Intent paketSetrika = new Intent(MainActivity.this,ProfileActivity.class);
-//                            startActivity(paketSetrika);
-//                            break;
-//                        case 1:
-//                            Intent paketCuciBasah = new Intent(MainActivity.this,DetailProfileActivity.class);
-//                            startActivity(paketCuciBasah);
-//                            break;
-//                        case 2:
-//                            Intent paketDryCleaning = new Intent(MainActivity.this,HistoryActivity.class);
-//                            startActivity(paketDryCleaning);
-//                            break;
-//                    }
-//                }
-//                return false;
-//            }
-//        });
+        viewPager.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                if (event.getAction() == MotionEvent.ACTION_UP && !isScrolling){
+                    int selectedPosition = viewPager.getCurrentItem();
+                    adapter.openActivity(selectedPosition);
+                }
+                return false;
+            }
+        });
     }
 
     private void getOwner(OwnerCallback callback) {
@@ -417,5 +407,6 @@ public interface UserCallBack{
             }
         }
     }
+
 
 }
