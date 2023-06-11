@@ -1,5 +1,6 @@
 package com.example.myapplication;
 
+import android.content.Context;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -17,45 +18,35 @@ import java.util.List;
 public class AdapterTransaction extends RecyclerView.Adapter<AdapterTransaction.ViewHolder>{
     private List<TransactionModel> models;
     int totalHargaTransaksi = 0 ;
-    String harga;
+    private Context context;
+    private TextView subtotalTransaksi;
 
 
     public int getTotalHargaTransaksi() {
         return totalHargaTransaksi;
     }
+    public AdapterTransaction(Context context) {this.context = context;}
 
-
-
-
-
-
-
-    public void setData(List<TransactionModel> models) {
+    public void setData(List<TransactionModel> models, TextView subtotalTransaksi) {
         this.models = models;
+        this.subtotalTransaksi = subtotalTransaksi;
         calculateTotalHargaTransaksi();
         notifyDataSetChanged();
     }
     private void calculateTotalHargaTransaksi() {
-        List<Integer> subtotalList = new ArrayList<>(); // Membuat list untuk menyimpan subtotal
+        totalHargaTransaksi = 0;
         for (TransactionModel model : models) {
             int harga = Integer.parseInt(model.getHarga());
-            Log.d("TAGS", "Harga: " + harga);
             int qty = model.getQty();
-            Log.d("TAGS", "QTY: " + qty);
             if (qty > 0) {
                 int total = harga * qty;
-                Log.d("Tags", "Total: " + total);
-                subtotalList.add(total); // Menyimpan subtotal ke dalam list
-                Log.d("TAGS", "SubTotal" + total);
+                totalHargaTransaksi += total; // Menjumlahkan langsung ke totalHargaTransaksi
             }
         }
-
-        totalHargaTransaksi = 0;
-        for (int subtotal : subtotalList) {
-            totalHargaTransaksi += subtotal; // Menjumlahkan semua subtotal dalam list
-        }
         Log.d("TAGS", "Total Akhir: " + totalHargaTransaksi);
+        subtotalTransaksi.setText(String.valueOf(totalHargaTransaksi));
     }
+
 
 
     @NonNull
@@ -97,7 +88,6 @@ public class AdapterTransaction extends RecyclerView.Adapter<AdapterTransaction.
             hargaPaket = itemView.findViewById(R.id.hargaPaket);
             totalHarga = itemView.findViewById(R.id.totalHarga);
 
-            harga = totalHarga.getText().toString();
 
             addIcon.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -114,9 +104,9 @@ public class AdapterTransaction extends RecyclerView.Adapter<AdapterTransaction.
                     totalHargaTransaksi = harga * qty;
 
                     model.setQty(qty);
-
-                    totalHarga.setText(String.valueOf(totalHargaTransaksi));
                     calculateTotalHargaTransaksi();
+                    totalHarga.setText(String.valueOf(totalHargaTransaksi));
+
 
 //
                 }

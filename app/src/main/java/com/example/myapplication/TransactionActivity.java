@@ -50,6 +50,9 @@ public class TransactionActivity extends AppCompatActivity {
         hargaPaket = findViewById(R.id.hargaPaket);
 
         submit = findViewById(R.id.submitPayment);
+        subtotalTransaksi = findViewById(R.id.subtotalTransaksi);
+
+
 
 
         backButton = findViewById(R.id.btnBackTransaction);
@@ -67,15 +70,14 @@ public class TransactionActivity extends AppCompatActivity {
             if (idString != null){
                 IDOutlet = Integer.parseInt(idString);
             }
-            Log.d("TAGS","ID Outlet:" + IDOutlet);
         }
 
         orderTS = findViewById(R.id.order_TS);
         orderTS.setLayoutManager(new LinearLayoutManager(this));
-        adapter = new AdapterTransaction();
+        adapter = new AdapterTransaction(this);
 
-        subtotalTransaksi = findViewById(R.id.subtotalTransaksi);
-        
+
+
         ApiTransaction.OutletApi apiTransaction = ApiTransaction.getApi();
         Call<List<TransactionModel>> call = apiTransaction.getPaket(IDOutlet);
         call.enqueue(new Callback<List<TransactionModel>>() {
@@ -84,18 +86,14 @@ public class TransactionActivity extends AppCompatActivity {
                 if (response.isSuccessful()){
 
                     List<TransactionModel> paketModel = response.body();
-                    adapter.setData(paketModel);
-                    int totalHargaTransaksi = adapter.getTotalHargaTransaksi();
-                    Log.d("TAGS","Total Harga Transaksi:" + totalHargaTransaksi);
-                    subtotalTransaksi.setText(String.valueOf(totalHargaTransaksi));
 
-                    Log.d("TAGS","Sub Total Transaksi:" + subtotalTransaksi);
+                    adapter.setData(paketModel,subtotalTransaksi);
                     orderTS.setAdapter(adapter);
+                    subtotalTransaksi.setText(String.valueOf(adapter.getTotalHargaTransaksi()));
 
-
+                    Log.d("TAGS:","TAGS:" + subtotalTransaksi);
                 }
             }
-
             @Override
             public void onFailure(Call<List<TransactionModel>> call, Throwable t) {
 
