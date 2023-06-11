@@ -8,6 +8,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -30,7 +32,9 @@ public class TransactionActivity extends AppCompatActivity {
     RecyclerView orderTS;
     ImageView backButton;
     int IDOutlet;
-    TextView idOutlet,idPaket,namaPaket,jenisPaket,hargaPaket;
+    Button submit;
+
+    TextView idOutlet,idPaket,namaPaket,jenisPaket,hargaPaket,totalPayment;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -43,8 +47,20 @@ public class TransactionActivity extends AppCompatActivity {
         namaPaket = findViewById(R.id.namaPaket);
         jenisPaket = findViewById(R.id.jenisPaket);
         hargaPaket = findViewById(R.id.hargaPaket);
+        totalPayment = findViewById(R.id.totalPayment);
+        submit = findViewById(R.id.submitPayment);
+
+        submit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
+
 
         backButton = findViewById(R.id.btnBackTransaction);
+
+
 
         backButton.setOnClickListener(new View.OnClickListener() {
             @Override

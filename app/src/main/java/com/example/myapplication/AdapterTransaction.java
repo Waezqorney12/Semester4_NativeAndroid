@@ -5,6 +5,8 @@ import android.text.Layout;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -48,9 +50,47 @@ public class AdapterTransaction extends RecyclerView.Adapter<AdapterTransaction.
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
+        private ImageView addIcon,minusIcon;
+        private EditText qtyPaket;
         private TextView idOutlet,idPaket,namaPaket,jenisPaket,hargaPaket;
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
+            addIcon = itemView.findViewById(R.id.addIcon);
+            minusIcon = itemView.findViewById(R.id.minusIcon);
+            qtyPaket = itemView.findViewById(R.id.qtyPaket);
+
+            addIcon.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    int postion = getBindingAdapterPosition();
+                    TransactionModel model = models.get(postion);
+
+                    String qtyAwal = qtyPaket.getText().toString();
+
+                    int qty = qtyAwal.isEmpty() ? 0 : Integer.parseInt(qtyAwal);
+                    qty++;
+                    qtyPaket.setText(String.valueOf(qty));
+
+                }
+            });
+
+            minusIcon.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    int position = getBindingAdapterPosition();
+                    TransactionModel model = models.get(position);
+
+                    String qtyAwal = qtyPaket.getText().toString();
+                    int qty = qtyAwal.isEmpty() ? 0 : Integer.parseInt(qtyAwal);
+                    if (qty > 0){
+                        qty--;
+                    }else{
+                        qty = 0;
+                    }
+                    qtyPaket.setText(String.valueOf(qty));
+                }
+            });
+
             idOutlet = itemView.findViewById(R.id.idOutlet);
             idPaket = itemView.findViewById(R.id.idPaket);
             namaPaket = itemView.findViewById(R.id.namaPaket);
