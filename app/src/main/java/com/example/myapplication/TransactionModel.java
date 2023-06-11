@@ -6,6 +6,8 @@ public class TransactionModel {
     private String nama_paket;
     private String jenis;
     private String harga;
+    private int qty;
+
 
     public TransactionModel(String id_outlet, String id_paket, String nama_paket, String jenis, String harga) {
         this.id_outlet = id_outlet;
@@ -13,6 +15,8 @@ public class TransactionModel {
         this.nama_paket = nama_paket;
         this.jenis = jenis;
         this.harga = harga;
+        this.qty = 5;
+
     }
 
     public String getId_outlet() {
@@ -54,4 +58,14 @@ public class TransactionModel {
     public void setHarga(String harga) {
         this.harga = harga;
     }
+
+    public int getQty() {
+        return qty;
+    }
+
+    public void setQty(int qty) {
+        this.qty = qty;
+    }
+
+
 }

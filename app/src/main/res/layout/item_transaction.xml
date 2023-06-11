@@ -130,16 +130,37 @@
 
             </LinearLayout>
 
-
             <TextView
-                android:id="@+id/hargaPaket"
+
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/jenisPaket"
                 android:layout_marginLeft="10dp"
                 android:layout_marginTop="10dp"
                 android:fontFamily="@font/montserrate_semi"
-                android:text="Rp.15000"
+                android:text="Rp."
+                android:textColor="@color/blue_dark"
+                android:textSize="20sp" />
+            <TextView
+                android:id="@+id/hargaPaket"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/jenisPaket"
+                android:layout_marginLeft="45dp"
+                android:layout_marginTop="10dp"
+                android:fontFamily="@font/montserrate_semi"
+                android:text="15000"
+                android:textColor="@color/blue_dark"
+                android:textSize="20sp" />
+            <TextView
+                android:id="@+id/totalHarga"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/jenisPaket"
+                android:layout_marginLeft="120dp"
+                android:layout_marginTop="10dp"
+                android:fontFamily="@font/montserrate_semi"
+                android:text="0"
                 android:textColor="@color/blue_dark"
                 android:textSize="20sp" />
 
