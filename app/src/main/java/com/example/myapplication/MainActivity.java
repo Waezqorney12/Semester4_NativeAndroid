@@ -98,23 +98,23 @@ public class MainActivity extends AppCompatActivity {
         tUsername = findViewById(R.id.tUsernameMain);
 
         btnHistory = findViewById(R.id.btnHistoryMain);
-//        btnMap = findViewById(R.id.btnMapMain);
+        btnMap = findViewById(R.id.btnMapMain);
         btnSetting = findViewById(R.id.btnSettingMain);
 
         btnCloseMain = findViewById(R.id.buttonCloseMain);
 
-//        btnMap.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                if (ContextCompat.checkSelfPermission(MainActivity.this, Manifest.permission.ACCESS_FINE_LOCATION)
-//                        != PackageManager.PERMISSION_GRANTED) {
-//                    ActivityCompat.requestPermissions(MainActivity.this, new String[]{Manifest.permission.ACCESS_FINE_LOCATION},
-//                            PERMISSION_REQUEST_LOCATION);
-//                } else {
-//                    getCurrentLocation();
-//                }
-//            }
-//        });
+        btnMap.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (ContextCompat.checkSelfPermission(MainActivity.this, Manifest.permission.ACCESS_FINE_LOCATION)
+                        != PackageManager.PERMISSION_GRANTED) {
+                    ActivityCompat.requestPermissions(MainActivity.this, new String[]{Manifest.permission.ACCESS_FINE_LOCATION},
+                            PERMISSION_REQUEST_LOCATION);
+                } else {
+                    getCurrentLocation();
+                }
+            }
+        });
         btnHistory.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
