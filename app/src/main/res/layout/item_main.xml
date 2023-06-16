@@ -133,6 +133,7 @@
             android:gravity="center">
 
             <ImageView
+                android:clickable="true"
                 android:id="@+id/favoriteBorder"
                 android:layout_width="20dp"
                 android:layout_height="20dp"
@@ -151,6 +152,7 @@
             android:gravity="center">
 
             <ImageView
+                android:clickable="true"
                 android:id="@+id/locationMain"
                 android:layout_width="20dp"
                 android:layout_height="20dp"
@@ -171,6 +173,7 @@
             android:gravity="center">
 
             <ImageView
+                android:clickable="true"
                 android:id="@+id/phoneCall"
                 android:layout_width="20dp"
                 android:layout_height="20dp"

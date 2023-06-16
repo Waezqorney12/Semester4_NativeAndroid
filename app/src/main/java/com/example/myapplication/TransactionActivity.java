@@ -64,6 +64,7 @@ public class TransactionActivity extends AppCompatActivity {
             public void onClick(View v) {
                 SendTransaksi();
 
+
             }
         });
 

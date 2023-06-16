@@ -173,6 +173,7 @@ public class MainActivity extends AppCompatActivity {
 
 
 
+
         models = new ArrayList<>();
         ApiOutletClass.ApiOutlet apiOutlet = ApiOutletClass.getClient().create(ApiOutletClass.ApiOutlet.class);
         Call<List<ModelMain>> call = apiOutlet.getOutlet();
