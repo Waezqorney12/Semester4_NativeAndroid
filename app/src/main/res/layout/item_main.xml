@@ -8,7 +8,7 @@
 
     <RelativeLayout
         android:layout_width="250dp"
-        android:layout_height="300dp"
+        android:layout_height="320dp"
         android:layout_gravity="center"
         android:layout_marginBottom="28dp"
 
@@ -21,8 +21,8 @@
 
         <ImageView
             android:id="@+id/imageMain"
-            android:layout_width="165dp"
-            android:layout_height="159dp"
+            android:layout_width="180dp"
+            android:layout_height="130dp"
             android:layout_alignParentStart="true"
             android:layout_alignParentEnd="true"
             android:layout_marginStart="24dp"
@@ -37,11 +37,11 @@
 
             android:layout_alignParentEnd="true"
             android:layout_alignParentBottom="true"
-            android:layout_marginEnd="211dp"
-            android:layout_marginBottom="104dp"
+            android:layout_marginEnd="209dp"
+            android:layout_marginBottom="119dp"
             android:fontFamily="@font/roboto_regular"
             android:text="ID:"
-            android:textColor="@color/black"
+            android:textColor="@color/white"
             android:textSize="14dp" />
 
         <TextView
@@ -52,40 +52,43 @@
             android:layout_alignParentEnd="true"
             android:layout_alignParentBottom="true"
             android:layout_marginEnd="200dp"
-            android:layout_marginBottom="104dp"
+            android:layout_marginBottom="120dp"
             android:fontFamily="@font/roboto_regular"
             android:text="1"
-            android:textColor="@color/black"
+            android:textColor="@color/white"
             android:textSize="14dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_marginLeft="7dp"
+            android:layout_marginBottom="51dp"
+            android:layout_toRightOf="@+id/jarakOutlet"
+            android:text="km" />
+
+        <TextView
+            android:id="@+id/jarakOutlet"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginStart="23dp"
+            android:layout_marginBottom="51dp"
+            android:text="10" />
 
         <TextView
             android:id="@+id/outletMain"
             android:layout_width="212dp"
             android:layout_height="wrap_content"
-
-
             android:layout_alignParentEnd="true"
             android:layout_alignParentBottom="true"
             android:layout_marginEnd="15dp"
-            android:layout_marginBottom="80dp"
+            android:layout_marginBottom="95dp"
             android:fontFamily="@font/roboto_medium"
             android:text="Mafia Pentol"
             android:textColor="@color/black"
-            android:textSize="14dp" />
-
-        <TextView
-            android:id="@+id/nomorMain"
-            android:layout_width="145dp"
-            android:layout_height="wrap_content"
-
-            android:layout_alignParentEnd="true"
-            android:layout_alignParentBottom="true"
-            android:layout_marginEnd="81dp"
-            android:layout_marginBottom="61dp"
-            android:fontFamily="@font/roboto_regular"
-            android:text="081230662475"
-            android:textColor="@color/black"
-            android:textSize="14dp" />
+            android:textSize="20dp" />
 
         <TextView
             android:id="@+id/jalanMain"
@@ -95,12 +98,106 @@
             android:layout_alignParentStart="true"
             android:layout_alignParentEnd="true"
             android:layout_alignParentBottom="true"
-            android:layout_marginStart="22dp"
-            android:layout_marginEnd="10dp"
-            android:layout_marginBottom="23dp"
+            android:layout_marginStart="23dp"
+            android:layout_marginEnd="9dp"
+            android:layout_marginBottom="74dp"
             android:fontFamily="@font/roboto_medium"
             android:text="Jalan Mundu"
             android:textColor="@color/blue_font"
-            android:textSize="20dp" />
+            android:textSize="14dp" />
+
+        <TextView
+            android:id="@+id/nomorMain"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginEnd="5dp"
+            android:layout_marginBottom="4dp"
+            android:fontFamily="@font/roboto_regular"
+            android:text="081230662475"
+            android:textColor="@color/white"
+            android:textSize="14dp" />
+
+        <RelativeLayout
+            android:id="@+id/BorderLove"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginStart="23dp"
+            android:layout_marginBottom="138dp"
+            android:background="@drawable/profile_background"
+            android:elevation="2dp"
+            android:gravity="center">
+
+            <ImageView
+                android:id="@+id/favoriteBorder"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:src="@drawable/ic_baseline_favorite_border_24" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_alignParentBottom="true"
+            android:layout_marginLeft="10dp"
+            android:layout_marginBottom="137dp"
+            android:layout_toRightOf="@+id/BorderPhone"
+            android:background="@drawable/profile_background"
+            android:elevation="2dp"
+            android:gravity="center">
+
+            <ImageView
+                android:id="@+id/locationMain"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_centerHorizontal="true"
+                android:src="@drawable/ic_baseline_location_on_24_dashboard" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/BorderPhone"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_alignParentBottom="true"
+            android:layout_marginLeft="101dp"
+            android:layout_marginBottom="137dp"
+            android:layout_toRightOf="@+id/BorderLove"
+            android:background="@drawable/profile_background"
+            android:elevation="2dp"
+            android:gravity="center">
+
+            <ImageView
+                android:id="@+id/phoneCall"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_centerHorizontal="true"
+                android:src="@drawable/ic_baseline_phone_24" />
+        </RelativeLayout>
+
+        <ImageView
+            android:id="@+id/favorite"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginStart="23dp"
+            android:layout_marginBottom="21dp"
+            android:src="@drawable/ic_baseline_favorite_24" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_marginLeft="7dp"
+            android:layout_marginBottom="22dp"
+            android:layout_toRightOf="@+id/favorite"
+            android:fontFamily="@font/montserrate_semi"
+            android:text="0"
+            android:textColor="@color/black"
+            android:textSize="14sp" />
     </RelativeLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

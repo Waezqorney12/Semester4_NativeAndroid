@@ -193,26 +193,4 @@ public class ChangePassword extends AppCompatActivity {
                     }
                 }).show();
     }
-
-//    private void getUser(String username,String email,String alamat,String telepon,String createdAt,String updatedAt){
-//        Intent intent = getIntent();
-//        username = intent.getStringExtra("username");
-//        email = intent.getStringExtra("email");
-//        alamat = intent.getStringExtra("alamat");
-//        telepon = intent.getStringExtra("telepon");
-//        createdAt = intent.getStringExtra("created_at");
-//        updatedAt = intent.getStringExtra("updated_at");
-//
-//    }
-//    private void sendUser(){
-//        String username;
-//        String email;
-//
-//        String alamat;
-//        String telepon;
-//        String createdAt;
-//        String updatedAt;
-//        getUser(username,email,alamat,telepon,createdAt,updatedAt);
-//
-//    }
 }

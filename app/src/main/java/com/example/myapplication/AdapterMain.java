@@ -80,9 +80,6 @@ public class AdapterMain extends PagerAdapter {
 
             String id = selectedModel.getId();
             intent.putExtra("id",id);
-            // Kirim data tambahan ke aktivitas yang akan dibuka
-            // intent.putExtra("key", value);
-
             context.startActivity(intent);
         }
     }

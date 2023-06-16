@@ -13,23 +13,15 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.google.gson.Gson;
-import com.google.gson.JsonObject;
-
-import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.util.ArrayList;
 import java.util.List;
 
-import okhttp3.FormBody;
-import okhttp3.RequestBody;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -39,7 +31,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 public class TransactionActivity extends AppCompatActivity {
 
     AdapterTransaction adapter;
-    List<TransactionModel> models;
+    List<ModelTransaction> models;
     List<ModelDetailTransaction> modelDetail;
     RecyclerView orderTS;
     ImageView backButton;
@@ -100,13 +92,13 @@ public class TransactionActivity extends AppCompatActivity {
 
 
         ApiTransaction.OutletApi apiTransaction = ApiTransaction.getApi();
-        Call<List<TransactionModel>> call = apiTransaction.getPaket(IDOutlet);
-        call.enqueue(new Callback<List<TransactionModel>>() {
+        Call<List<ModelTransaction>> call = apiTransaction.getPaket(IDOutlet);
+        call.enqueue(new Callback<List<ModelTransaction>>() {
             @Override
-            public void onResponse(Call<List<TransactionModel>> call, Response<List<TransactionModel>> response) {
+            public void onResponse(Call<List<ModelTransaction>> call, Response<List<ModelTransaction>> response) {
                 if (response.isSuccessful()){
 
-                    List<TransactionModel> paketModel = response.body();
+                    List<ModelTransaction> paketModel = response.body();
 
                     adapter.setData(paketModel,subtotalTransaksi);
                     orderTS.setAdapter(adapter);
@@ -116,7 +108,7 @@ public class TransactionActivity extends AppCompatActivity {
                 }
             }
             @Override
-            public void onFailure(Call<List<TransactionModel>> call, Throwable t) {
+            public void onFailure(Call<List<ModelTransaction>> call, Throwable t) {
 
             }
         });
@@ -130,7 +122,7 @@ public class TransactionActivity extends AppCompatActivity {
         int subtotal = Integer.parseInt(subtotalTransaksi.getText().toString());
         JSONObject params = new JSONObject();
         try {
-            params.put("id_outle",IDOutlet);
+            params.put("id_outlet",IDOutlet);
             params.put("total_pesanan",subtotal);
 
         } catch (JSONException e) {
@@ -201,50 +193,6 @@ public class TransactionActivity extends AppCompatActivity {
                     }
                 }).show();
     }
-
-//    private void SendTransaksi() {
-//        String BASE = getString(R.string.api_server) + "/";
-//        String Outlet = String.valueOf(IDOutlet);
-//        String TotalPesanan = String.valueOf(subtotalTransaksi);
-//        Retrofit retrofit = new Retrofit.Builder()
-//                .baseUrl(BASE)
-//                .addConverterFactory(GsonConverterFactory.create())
-//                .build();
-//
-//        JsonObject requestBody = new JsonObject();
-//        requestBody.addProperty("id_outlet", Outlet);
-//        requestBody.addProperty("total_pesanan", TotalPesanan);
-//
-//        ApiSendTransaction apiSendTransaction = retrofit.create(ApiSendTransaction.class);
-//
-//        sharedPreferences = getSharedPreferences("STORAGE_LOGIN_API", Context.MODE_PRIVATE);
-//        token = sharedPreferences.getString("TOKEN", "");
-//        String authorizationHeader = "Bearer " + token;
-//
-//        Call<JsonObject> call = apiSendTransaction.createTransaksi(authorizationHeader, requestBody);
-//        call.enqueue(new Callback<JsonObject>() {
-//            @Override
-//            public void onResponse(Call<JsonObject> call, Response<JsonObject> response) {
-//                if (response.isSuccessful()) {
-//                    JsonObject responseBody = response.body();
-//                    String message = responseBody.get("message").getAsString();
-//                    JsonObject data = responseBody.get("data").getAsJsonObject();
-//                    // Tanggapan sukses
-//                    Log.d("ApiResponse", "Message: " + message);
-//                    Log.d("ApiResponse", "Data: " + data.toString());
-//                } else {
-//                    // Tanggapan gagal
-//                    Log.e("ApiResponse", "Error: " + response.message());
-//                }
-//            }
-//
-//            @Override
-//            public void onFailure(Call<JsonObject> call, Throwable t) {
-//                Log.e("TAGS", "Error: " + t.getMessage());
-//            }
-//        });
-//    }
-
 
     private void SendDetail(List<ModelDetailTransaction> detailTransactions){
         String BASE = getString(R.string.api_server)+"/";

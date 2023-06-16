@@ -1,6 +1,6 @@
 package com.example.myapplication;
 
-public class TransactionModel {
+public class ModelTransaction {
     private String id_outlet;
     private String id_paket;
     private String nama_paket;
@@ -9,7 +9,7 @@ public class TransactionModel {
     private int qty;
 
 
-    public TransactionModel(String id_outlet, String id_paket, String nama_paket, String jenis, String harga) {
+    public ModelTransaction(String id_outlet, String id_paket, String nama_paket, String jenis, String harga) {
         this.id_outlet = id_outlet;
         this.id_paket = id_paket;
         this.nama_paket = nama_paket;

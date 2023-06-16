@@ -12,6 +12,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.google.android.gms.common.api.Api;
 
@@ -29,7 +30,9 @@ public class HistoryActivity extends AppCompatActivity {
     List<ModelHistory> model;
     AdapterHistory adapterHistory;
     RecyclerView orderRV;
+    TextView totalHistory;
 
+    int totalOrder = 0;
     SharedPreferences sharedPreferences;
     String token;
     @Override
@@ -44,6 +47,11 @@ public class HistoryActivity extends AppCompatActivity {
         sharedPreferences = getSharedPreferences("STORAGE_LOGIN_API", Context.MODE_PRIVATE);
         token = sharedPreferences.getString("TOKEN", "");
         Log.d("TAGS","Token SharedPreferences History: " + token);
+
+        totalHistory = findViewById(R.id.numberOrderHistory);
+
+        totalOrder = model.size();
+        totalHistory.setText(String.valueOf(totalOrder));
 
         orderRV = findViewById(R.id.order_RV);
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(this);
@@ -62,10 +70,6 @@ public class HistoryActivity extends AppCompatActivity {
                 startActivity(intentHistory);
             }
         });
-
-        btnSetrikaHistory = findViewById(R.id.setrikaHistory);
-        btnCuciBasahHistory = findViewById(R.id.cuciBasahHistory);
-        btnDryCleaningHistory = findViewById(R.id.dryingCleaningHistory);
 
     }
 
@@ -87,12 +91,13 @@ public class HistoryActivity extends AppCompatActivity {
                     List<ModelHistory> historyList = response.body();
                     model.addAll(historyList);
                     adapterHistory.notifyDataSetChanged();
+                    totalOrder = model.size();
+                    totalHistory.setText(String.valueOf(totalOrder));
                 }
             }
 
             @Override
             public void onFailure(Call<List<ModelHistory>> call, Throwable t) {
-                // Handle failure
             }
         });
     }

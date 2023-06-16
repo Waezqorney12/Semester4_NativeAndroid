@@ -12,11 +12,10 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class AdapterTransaction extends RecyclerView.Adapter<AdapterTransaction.ViewHolder>{
-    private List<TransactionModel> models;
+    private List<ModelTransaction> models;
     int totalHargaTransaksi = 0 ;
     private Context context;
     private TextView subtotalTransaksi;
@@ -27,7 +26,7 @@ public class AdapterTransaction extends RecyclerView.Adapter<AdapterTransaction.
     }
     public AdapterTransaction(Context context) {this.context = context;}
 
-    public void setData(List<TransactionModel> models, TextView subtotalTransaksi) {
+    public void setData(List<ModelTransaction> models, TextView subtotalTransaksi) {
         this.models = models;
         this.subtotalTransaksi = subtotalTransaksi;
         calculateTotalHargaTransaksi();
@@ -35,7 +34,7 @@ public class AdapterTransaction extends RecyclerView.Adapter<AdapterTransaction.
     }
     private void calculateTotalHargaTransaksi() {
         totalHargaTransaksi = 0;
-        for (TransactionModel model : models) {
+        for (ModelTransaction model : models) {
             int harga = Integer.parseInt(model.getHarga());
             int qty = model.getQty();
             if (qty > 0) {
@@ -58,7 +57,7 @@ public class AdapterTransaction extends RecyclerView.Adapter<AdapterTransaction.
 
     @Override
     public void onBindViewHolder(@NonNull AdapterTransaction.ViewHolder holder, int position) {
-        TransactionModel paket = models.get(position);
+        ModelTransaction paket = models.get(position);
         holder.idOutlet.setText(paket.getId_outlet());
         holder.idPaket.setText(paket.getId_paket());
         holder.namaPaket.setText(paket.getNama_paket());
@@ -93,7 +92,7 @@ public class AdapterTransaction extends RecyclerView.Adapter<AdapterTransaction.
                 @Override
                 public void onClick(View v) {
                     int position = getBindingAdapterPosition();
-                    TransactionModel model = models.get(position);
+                    ModelTransaction model = models.get(position);
 
                     String qtyAwal = qtyPaket.getText().toString();
                     int qty = qtyAwal.isEmpty() ? 0 : Integer.parseInt(qtyAwal);
@@ -117,7 +116,7 @@ public class AdapterTransaction extends RecyclerView.Adapter<AdapterTransaction.
                 @Override
                 public void onClick(View v) {
                     int position = getBindingAdapterPosition();
-                    TransactionModel model = models.get(position);
+                    ModelTransaction model = models.get(position);
 
                     String qtyAwal = qtyPaket.getText().toString();
                     int qty = qtyAwal.isEmpty() ? 0 : Integer.parseInt(qtyAwal);

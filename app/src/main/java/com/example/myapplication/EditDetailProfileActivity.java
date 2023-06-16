@@ -200,38 +200,4 @@ public class EditDetailProfileActivity extends AppCompatActivity {
         intent.putExtra("created_at",created_at);
         intent.putExtra("updated_at",updated_at);
     }
-//    private void returnToDetailProfile(ProfileModel profile) {
-//        Intent intent = new Intent(EditDetailProfileActivity.this, DetailProfileActivity.class);
-//        intent.putExtra("profile", profile);
-//        startActivity(intent);
-//        finish(); // Optional: Menutup EditDetailProfileActivity agar tidak kembali ke halaman ini saat menekan tombol back di DetailProfileActivity
-//    }
-//        Retrofit retrofit = new Retrofit.Builder()
-//                .baseUrl(baseUrl)
-//                .addConverterFactory(GsonConverterFactory.create())
-//                .build();
-//
-//        //API Service untuk Update profile
-//        ApiService apiService = retrofit.create(ApiService.class);
-//        sharedPreferences = getSharedPreferences("STORAGE_LOGIN_API", Context.MODE_PRIVATE);
-//        token = sharedPreferences.getString("TOKEN", "");
-
-    //Menggunakan textIdProfile dikarenakan apabila value dari ProfileModelnya masih bernilai null atau default
-//        Call<Void> call = apiService.updateProfile(profile);
-//        call.enqueue(new Callback<Void>() {
-//            @Override
-//            public void onResponse(Call<Void> call, Response<Void> response) {
-//                if (response.isSuccessful()) {
-//                    Toast.makeText(EditDetailProfileActivity.this, "Data profil berhasil diperbarui", Toast.LENGTH_SHORT).show();
-//                } else {
-//                    Toast.makeText(EditDetailProfileActivity.this, "Gagal memperbarui data profil", Toast.LENGTH_SHORT).show();
-//                }
-//            }
-//
-//            @Override
-//            public void onFailure(Call<Void> call, Throwable t) {
-//                // Kegagalan komunikasi dengan server
-//                Toast.makeText(EditDetailProfileActivity.this, "Terjadi kesalahan: " + t.getMessage(), Toast.LENGTH_SHORT).show();
-//            }
-//        });
 }

@@ -6,6 +6,7 @@ public class ModelHistory {
     private String status;
     private String tanggal_pesan;
 
+
     public ModelHistory(OutletData id_outlet_data, String kd_invoice, String status, String tanggal_pesan) {
         this.id_outlet_data = id_outlet_data;
         this.kd_invoice = kd_invoice;

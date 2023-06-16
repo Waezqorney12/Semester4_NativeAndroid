@@ -174,7 +174,7 @@ public class MainActivity extends AppCompatActivity {
 
 
         models = new ArrayList<>();
-        OutletClass.ApiOutlet apiOutlet = OutletClass.getClient().create(OutletClass.ApiOutlet.class);
+        ApiOutletClass.ApiOutlet apiOutlet = ApiOutletClass.getClient().create(ApiOutletClass.ApiOutlet.class);
         Call<List<ModelMain>> call = apiOutlet.getOutlet();
 
         call.enqueue(new Callback<List<ModelMain>>() {
